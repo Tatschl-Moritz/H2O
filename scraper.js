@@ -175,7 +175,7 @@ function parseHeading($) {
 function parseLocation(pageText) {
   const kopf = pageText.slice(0, 600);
   const m = kopf.match(
-    /\d{2}:\d{2}\s*Uhr\s+([A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß.\-\s]{2,40}?)(?=\s+ab\s|\s+\d|\s+Perfekt|\s+Erlebe|$)/i
+    /\d{2}:\d{2}\s*Uhr\s*([A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß.\-\s]{2,40}?)(?=\s+ab\s|\s+\d|\s+Perfekt|\s+Erlebe|$)/i
   );
   if (m !== null) {
     return m[1].trim();

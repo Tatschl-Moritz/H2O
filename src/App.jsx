@@ -1,21 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Kategorie -> Farbe (H2Os echte Kategorienamen)
-function farbeFuerKategorie(kategorie) {
+// Anzeige-Reihenfolge: erst Rafting, dann Canyoning, dann der Rest.
+function tourGruppe(kategorie) {
   if (kategorie === "Rafting") {
-    return "var(--k-rafting)";
+    return { prioritaet: 0, label: "Rafting" };
   } else if (kategorie === "Canyoning") {
-    return "var(--k-canyoning)";
-  } else if (kategorie === "Wasser Funsport") {
-    return "var(--k-wasser)";
-  } else if (kategorie === "Bergabenteuer") {
-    return "var(--k-berg)";
-  } else if (kategorie === "Hochseilgarten") {
-    return "var(--k-seil)";
+    return { prioritaet: 1, label: "Canyoning" };
   } else {
-    return "var(--k-default)";
+    return { prioritaet: 2, label: "Sonstige" };
   }
+}
+
+function sortiereTouren(tours) {
+  return [...tours].sort((a, b) => {
+    const pa = tourGruppe(a.kategorie).prioritaet;
+    const pb = tourGruppe(b.kategorie).prioritaet;
+    if (pa !== pb) {
+      return pa - pb;
+    }
+    if (a.time < b.time) {
+      return -1;
+    } else if (a.time > b.time) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 }
 
 // Datum "2026-07-15" in der Zeitzone Wien berechnen (passt zu den Dateinamen).
@@ -93,9 +104,7 @@ function TourRow({ tour, maxCount, index }) {
       <div className="info">
         <div className="name">{tour.title}</div>
         <div className="sub">
-          <span className="chip" style={{ background: farbeFuerKategorie(tour.kategorie) }}>
-            {tour.kategorie}
-          </span>
+          <span className="chip">{tour.kategorie}</span>
           <span className="loc">{location}</span>
         </div>
       </div>
@@ -174,13 +183,22 @@ export default function App() {
       </div>
     );
   } else {
-    body = (
-      <div className="list">
-        {data.tours.map((tour, i) => (
-          <TourRow key={tour.url} tour={tour} maxCount={maxCount} index={i} />
-        ))}
-      </div>
-    );
+    const sortiert = sortiereTouren(data.tours);
+    const items = [];
+    let vorherigeGruppe = null;
+    sortiert.forEach((tour, i) => {
+      const gruppe = tourGruppe(tour.kategorie);
+      if (gruppe.prioritaet !== vorherigeGruppe) {
+        items.push(
+          <div className="divider" key={`divider-${tour.url}`}>
+            {gruppe.label}
+          </div>
+        );
+      }
+      items.push(<TourRow key={tour.url} tour={tour} maxCount={maxCount} index={i} />);
+      vorherigeGruppe = gruppe.prioritaet;
+    });
+    body = <div className="list">{items}</div>;
   }
 
   // Toggle: Pill-Position und aktive Klassen ohne Ternary vorberechnen.

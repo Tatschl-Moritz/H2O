@@ -1,1 +1,105 @@
-
+{
+  "date": "2026-07-15",
+  "weekday": "Mittwoch",
+  "updatedAt": "2026-07-15T21:06:56.417Z",
+  "tours": [
+    {
+      "date": "2026-07-15",
+      "weekday": "Mittwoch",
+      "tourId": "30263",
+      "title": "Einsteigertour \"Wonderland\"",
+      "time": "09:00",
+      "anmeldungen": 15,
+      "kategorie": "Canyoning",
+      "location": "Ried im Oberinntal",
+      "minAge": 12,
+      "durationH": 3,
+      "distanceKm": null,
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-15/action-30263/"
+    },
+    {
+      "date": "2026-07-15",
+      "weekday": "Mittwoch",
+      "tourId": "30001",
+      "title": "Familien Canyoning",
+      "time": "09:00",
+      "anmeldungen": 17,
+      "kategorie": "Canyoning",
+      "location": "Ried im Oberinntal",
+      "minAge": 6,
+      "durationH": 3,
+      "distanceKm": null,
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-15/action-30001/"
+    },
+    {
+      "date": "2026-07-15",
+      "weekday": "Mittwoch",
+      "tourId": "30394",
+      "title": "Rafting Einsteigertour",
+      "time": "09:30",
+      "anmeldungen": 6,
+      "kategorie": "Rafting",
+      "location": "Ried im Oberinntal",
+      "minAge": 12,
+      "durationH": 3,
+      "distanceKm": 14,
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-15/action-30394/"
+    },
+    {
+      "date": "2026-07-15",
+      "weekday": "Mittwoch",
+      "tourId": "32514",
+      "title": "Waldseilgarten im Verwall",
+      "time": "10:00",
+      "anmeldungen": 7,
+      "kategorie": "Hochseilgarten",
+      "location": "St. Anton am Arlberg",
+      "minAge": 5,
+      "durationH": 2,
+      "distanceKm": null,
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-15/action-32514/"
+    },
+    {
+      "date": "2026-07-15",
+      "weekday": "Mittwoch",
+      "tourId": "30918",
+      "title": "Familien-Piratenrafting",
+      "time": "14:00",
+      "anmeldungen": 28,
+      "kategorie": "Rafting",
+      "location": "Ried im Oberinntal",
+      "minAge": 5,
+      "durationH": 3,
+      "distanceKm": 10,
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-15/action-30918/"
+    },
+    {
+      "date": "2026-07-15",
+      "weekday": "Mittwoch",
+      "tourId": "31180",
+      "title": "Rafting Einsteigertour",
+      "time": "14:00",
+      "anmeldungen": 34,
+      "kategorie": "Rafting",
+      "location": "Ried im Oberinntal",
+      "minAge": 12,
+      "durationH": 3,
+      "distanceKm": 14,
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-15/action-31180/"
+    },
+    {
+      "date": "2026-07-15",
+      "weekday": "Mittwoch",
+      "tourId": "31442",
+      "title": "Wildwasser-Kick",
+      "time": "14:00",
+      "anmeldungen": 14,
+      "kategorie": "Rafting",
+      "location": "Ried in Oberinntal",
+      "minAge": 14,
+      "durationH": 3,
+      "distanceKm": 10,
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-15/action-31442/"
+    }
+  ]
+}

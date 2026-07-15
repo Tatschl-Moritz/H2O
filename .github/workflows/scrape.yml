@@ -1,1 +1,44 @@
+name: Scrape H2O
 
+on:
+  schedule:
+    # Laeuft stuendlich; deckt 08-19 Uhr Wien in Sommer- und Winterzeit ab.
+    - cron: "0 5-18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape-h2o
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Abhaengigkeiten installieren
+        run: npm ci
+
+      - name: Scraper ausfuehren
+        run: npm run scrape
+
+      - name: Daten committen und pushen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data public/history
+          if git diff --cached --quiet; then
+            echo "Keine Aenderungen."
+          else
+            git commit -m "Scrape: Daten aktualisiert ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+            git push
+          fi
