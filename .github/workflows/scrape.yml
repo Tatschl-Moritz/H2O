@@ -4,6 +4,11 @@ on:
   schedule:
     # Laeuft stuendlich; deckt 08-19 Uhr Wien in Sommer- und Winterzeit ab.
     - cron: "0 5-18 * * *"
+    # Zusaetzlicher Lauf kurz nach Mitternacht (00:10 Wien), damit "morgen"
+    # nicht bis zum ersten Tageslauf leer bleibt. Je ein Eintrag fuer Sommer-
+    # und Winterzeit, der jeweils andere laeuft dann einfach ~1h daneben mit.
+    - cron: "10 22 * * *" # 00:10 CEST (Sommerzeit, UTC+2)
+    - cron: "10 23 * * *" # 00:10 CET (Winterzeit, UTC+1)
   workflow_dispatch:
 
 permissions:
