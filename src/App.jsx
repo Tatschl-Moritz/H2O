@@ -201,12 +201,13 @@ export default function App() {
     body = <div className="list">{items}</div>;
   }
 
-  // Toggle: Pill-Position und aktive Klassen ohne Ternary vorberechnen.
-  let pillStyle;
+  // Toggle: Pill-Verschiebung per Transform (statt left/right), damit es
+  // ruckelfrei ueber die GPU animiert wird statt bei jedem Frame ein Layout-Reflow auszuloesen.
+  let pillX;
   if (tab === "heute") {
-    pillStyle = { left: 4, right: "50%" };
+    pillX = "0%";
   } else {
-    pillStyle = { left: "50%", right: 4 };
+    pillX = "100%";
   }
 
   let heuteClass = "";
@@ -238,7 +239,11 @@ export default function App() {
         </div>
 
         <div className="toggle">
-          <motion.div layoutId="pill" className="pill" style={pillStyle} />
+          <motion.div
+            className="pill"
+            animate={{ x: pillX }}
+            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+          />
           <button className={heuteClass} onClick={() => setTab("heute")}>
             Heute
           </button>

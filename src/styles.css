@@ -127,9 +127,12 @@ body {
   position: absolute;
   top: 4px;
   bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
   border-radius: 40px;
   background: var(--fg);
   z-index: 0;
+  will-change: transform;
 }
 
 .toggle button {
