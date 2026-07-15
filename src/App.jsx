@@ -61,8 +61,9 @@ function formatStand(iso) {
   });
 }
 
-// Eine Tour-Zeile.
-function TourRow({ tour, maxCount, index }) {
+// Eine Tour-Zeile. Animiert wird nur die Anmeldungen-Zahl, nicht die ganze Zeile,
+// damit beim Tab-Wechsel nicht die komplette Liste von oben nach unten neu einfliegt.
+function TourRow({ tour, maxCount }) {
   // Wasserstand-Breite: relativ zur vollsten Tour des Tages.
   let fill = 0;
   if (tour.anmeldungen !== null && maxCount > 0) {
@@ -81,35 +82,32 @@ function TourRow({ tour, maxCount, index }) {
   } else {
     countBlock = (
       <div className="count">
-        <div className="num">{tour.anmeldungen}</div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={tour.anmeldungen}
+            className="num"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.28 }}
+          >
+            {tour.anmeldungen}
+          </motion.div>
+        </AnimatePresence>
         <div className="lbl">Anmeldungen</div>
       </div>
     );
   }
 
-  let location = tour.location;
-  if (location === null || location === undefined) {
-    location = "";
-  }
-
   return (
-    <motion.div
-      className="row"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.28, delay: index * 0.04 }}
-    >
+    <div className="row">
       <div className="water" style={{ width: fill + "%" }} />
       <div className="time">{tour.time}</div>
       <div className="info">
         <div className="name">{tour.title}</div>
-        <div className="sub">
-          <span className="chip">{tour.kategorie}</span>
-          <span className="loc">{location}</span>
-        </div>
       </div>
       {countBlock}
-    </motion.div>
+    </div>
   );
 }
 
@@ -117,6 +115,9 @@ export default function App() {
   const [tab, setTab] = useState("heute"); // "heute" | "morgen"
   const [data, setData] = useState(null);
   const [status, setStatus] = useState("loading"); // loading | ok | empty | error
+  // Bleibt beim Tab-Wechsel stehen, damit die "Stand"-Zeile nicht kurz
+  // verschwindet, waehrend die Daten des anderen Tages nachgeladen werden.
+  const [lastUpdatedAt, setLastUpdatedAt] = useState(null);
 
   const dates = { heute: dateInVienna(0), morgen: dateInVienna(1) };
 
@@ -138,6 +139,9 @@ export default function App() {
           return;
         }
         setData(json);
+        if (json.updatedAt) {
+          setLastUpdatedAt(json.updatedAt);
+        }
         if (json.tours && json.tours.length > 0) {
           setStatus("ok");
         } else {
@@ -183,10 +187,12 @@ export default function App() {
       </div>
     );
   } else {
-    const sortiert = sortiereTouren(data.tours);
+    // Touren ohne Anmeldungen (0) blenden wir aus, die sind fuer die Guides irrelevant.
+    const relevanteTouren = data.tours.filter((tour) => tour.anmeldungen !== 0);
+    const sortiert = sortiereTouren(relevanteTouren);
     const items = [];
     let vorherigeGruppe = null;
-    sortiert.forEach((tour, i) => {
+    sortiert.forEach((tour) => {
       const gruppe = tourGruppe(tour.kategorie);
       if (gruppe.prioritaet !== vorherigeGruppe) {
         items.push(
@@ -195,10 +201,15 @@ export default function App() {
           </div>
         );
       }
-      items.push(<TourRow key={tour.url} tour={tour} maxCount={maxCount} index={i} />);
+      items.push(<TourRow key={tour.url} tour={tour} maxCount={maxCount} />);
       vorherigeGruppe = gruppe.prioritaet;
     });
-    body = <div className="list">{items}</div>;
+
+    if (items.length === 0) {
+      body = <div className="state">Keine Touren mit Anmeldungen an diesem Tag.</div>;
+    } else {
+      body = <div className="list">{items}</div>;
+    }
   }
 
   // Toggle: Pill-Verschiebung per Transform (statt left/right), damit es
@@ -218,13 +229,14 @@ export default function App() {
     morgenClass = "active";
   }
 
-  // "Stand"-Zeile.
+  // "Stand"-Zeile: nutzt den zuletzt bekannten Wert, damit sie beim
+  // Tab-Wechsel nicht kurz verschwindet.
   let stand = null;
-  if (data && data.updatedAt) {
+  if (lastUpdatedAt) {
     stand = (
       <div className="stand">
         <span className="dot" />
-        Stand {formatStand(data.updatedAt)}
+        Stand {formatStand(lastUpdatedAt)}
       </div>
     );
   }

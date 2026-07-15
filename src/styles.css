@@ -56,8 +56,8 @@ body {
 }
 
 .wordmark b {
-  color: var(--fg);
-  font-weight: 700;
+  color: inherit;
+  font-weight: inherit;
 }
 
 .title-row {
@@ -189,10 +189,16 @@ body {
 
 .row .time {
   font-family: var(--font-mono);
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   letter-spacing: -0.01em;
-  min-width: 52px;
+  color: var(--muted);
+  min-width: 44px;
+  padding-right: 16px;
+  border-right: 1px solid var(--border);
+  align-self: stretch;
+  display: flex;
+  align-items: center;
 }
 
 .row .info {
@@ -206,33 +212,6 @@ body {
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.25;
-}
-
-.row .sub {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 6px;
-  flex-wrap: wrap;
-}
-
-.row .chip {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid var(--border-med);
-  border-radius: 20px;
-  padding: 3px 10px;
-  white-space: nowrap;
-}
-
-.row .loc {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--muted);
 }
 
 .row .count {
