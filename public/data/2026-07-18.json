@@ -1,7 +1,7 @@
 {
   "date": "2026-07-18",
   "weekday": "Samstag",
-  "updatedAt": "2026-07-17T19:04:34.563Z",
+  "updatedAt": "2026-07-17T23:00:07.450Z",
   "tours": [
     {
       "date": "2026-07-18",
@@ -15,7 +15,7 @@
       "minAge": 14,
       "durationH": 3.5,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-17/action-30528/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-18/action-30528/"
     },
     {
       "date": "2026-07-18",
@@ -29,7 +29,7 @@
       "minAge": 5,
       "durationH": 3,
       "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-17/action-30135/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-18/action-30135/"
     },
     {
       "date": "2026-07-18",
@@ -43,7 +43,7 @@
       "minAge": 6,
       "durationH": 3,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-17/action-32775/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-18/action-32775/"
     },
     {
       "date": "2026-07-18",
@@ -57,7 +57,7 @@
       "minAge": 6,
       "durationH": 3,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-17/action-32892/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-18/action-32892/"
     },
     {
       "date": "2026-07-18",
@@ -71,7 +71,7 @@
       "minAge": 5,
       "durationH": 2,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-17/action-32517/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-18/action-32517/"
     },
     {
       "date": "2026-07-18",
@@ -85,7 +85,7 @@
       "minAge": 5,
       "durationH": 3,
       "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-17/action-30921/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-18/action-30921/"
     },
     {
       "date": "2026-07-18",
@@ -99,7 +99,7 @@
       "minAge": 12,
       "durationH": 3,
       "distanceKm": 14,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-17/action-31183/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-18/action-31183/"
     },
     {
       "date": "2026-07-18",
@@ -113,7 +113,7 @@
       "minAge": 14,
       "durationH": 3,
       "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-17/action-31445/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-18/action-31445/"
     },
     {
       "date": "2026-07-18",
@@ -127,7 +127,7 @@
       "minAge": 5,
       "durationH": 2,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-17/action-32649/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-18/action-32649/"
     }
   ]
 }
