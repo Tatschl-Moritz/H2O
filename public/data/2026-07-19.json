@@ -1,7 +1,7 @@
 {
   "date": "2026-07-19",
   "weekday": "Sonntag",
-  "updatedAt": "2026-07-18T11:52:02.449Z",
+  "updatedAt": "2026-07-18T14:50:19.345Z",
   "tours": [
     {
       "date": "2026-07-19",
@@ -107,7 +107,7 @@
       "tourId": "30136",
       "title": "Familien-Piratenrafting",
       "time": "09:30",
-      "anmeldungen": 0,
+      "anmeldungen": 4,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 5,
@@ -191,7 +191,7 @@
       "tourId": "31053",
       "title": "Einsteigertour \"Wonderland\"",
       "time": "13:30",
-      "anmeldungen": 3,
+      "anmeldungen": 0,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 12,
@@ -205,7 +205,7 @@
       "tourId": "30791",
       "title": "Familien Canyoning",
       "time": "13:30",
-      "anmeldungen": 8,
+      "anmeldungen": 14,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 6,
