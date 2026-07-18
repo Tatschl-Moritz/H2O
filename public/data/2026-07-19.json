@@ -1,7 +1,7 @@
 {
   "date": "2026-07-19",
   "weekday": "Sonntag",
-  "updatedAt": "2026-07-18T08:54:35.012Z",
+  "updatedAt": "2026-07-18T11:52:02.449Z",
   "tours": [
     {
       "date": "2026-07-19",
@@ -9,7 +9,7 @@
       "tourId": "33817",
       "title": "Arlberger Klettersteig",
       "time": "08:30",
-      "anmeldungen": 1,
+      "anmeldungen": 0,
       "kategorie": "Bergabenteuer",
       "location": "St. Anton am Arlberg",
       "minAge": 14,
@@ -121,7 +121,7 @@
       "tourId": "32893",
       "title": "Klettersteig für Einsteiger und Familien",
       "time": "09:30",
-      "anmeldungen": 0,
+      "anmeldungen": 6,
       "kategorie": "Bergabenteuer",
       "location": "Quarzitwand Burg Laudeck",
       "minAge": 6,
@@ -275,7 +275,7 @@
       "tourId": "32650",
       "title": "Waldseilgarten im Verwall",
       "time": "14:00",
-      "anmeldungen": 0,
+      "anmeldungen": 6,
       "kategorie": "Hochseilgarten",
       "location": "St. Anton am Arlberg",
       "minAge": 5,
