@@ -1,7 +1,7 @@
 {
   "date": "2026-07-19",
   "weekday": "Sonntag",
-  "updatedAt": "2026-07-18T15:55:09.650Z",
+  "updatedAt": "2026-07-18T16:55:59.981Z",
   "tours": [
     {
       "date": "2026-07-19",
@@ -51,7 +51,7 @@
       "tourId": "30529",
       "title": "Pure Action",
       "time": "09:00",
-      "anmeldungen": 2,
+      "anmeldungen": 0,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 14,
@@ -79,7 +79,7 @@
       "tourId": "30398",
       "title": "Rafting Einsteigertour",
       "time": "09:30",
-      "anmeldungen": 10,
+      "anmeldungen": 12,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 12,
