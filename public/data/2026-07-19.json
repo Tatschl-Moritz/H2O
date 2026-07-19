@@ -1,7 +1,7 @@
 {
   "date": "2026-07-19",
   "weekday": "Sonntag",
-  "updatedAt": "2026-07-19T16:58:13.619Z",
+  "updatedAt": "2026-07-19T18:01:23.587Z",
   "tours": [
     {
       "date": "2026-07-19",
@@ -20,16 +20,16 @@
     {
       "date": "2026-07-19",
       "weekday": "Sonntag",
-      "tourId": "30267",
-      "title": "Einsteigertour \"Wonderland\"",
+      "tourId": "30529",
+      "title": "Pure Action",
       "time": "09:00",
       "anmeldungen": 0,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
-      "minAge": 12,
-      "durationH": 3,
+      "minAge": 14,
+      "durationH": 3.5,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30267/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30529/"
     },
     {
       "date": "2026-07-19",
@@ -48,30 +48,16 @@
     {
       "date": "2026-07-19",
       "weekday": "Sonntag",
-      "tourId": "30529",
-      "title": "Pure Action",
-      "time": "09:00",
-      "anmeldungen": 0,
-      "kategorie": "Canyoning",
+      "tourId": "30136",
+      "title": "Familien-Piratenrafting",
+      "time": "09:30",
+      "anmeldungen": 6,
+      "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
-      "minAge": 14,
-      "durationH": 3.5,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30529/"
-    },
-    {
-      "date": "2026-07-19",
-      "weekday": "Sonntag",
-      "tourId": "30005",
-      "title": "Familien Canyoning",
-      "time": "09:00",
-      "anmeldungen": 0,
-      "kategorie": "Canyoning",
-      "location": "Ried im Oberinntal",
-      "minAge": 6,
+      "minAge": 5,
       "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30005/"
+      "distanceKm": 10,
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30136/"
     },
     {
       "date": "2026-07-19",
@@ -100,20 +86,6 @@
       "durationH": 3,
       "distanceKm": 10,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30660/"
-    },
-    {
-      "date": "2026-07-19",
-      "weekday": "Sonntag",
-      "tourId": "30136",
-      "title": "Familien-Piratenrafting",
-      "time": "09:30",
-      "anmeldungen": 6,
-      "kategorie": "Rafting",
-      "location": "Ried im Oberinntal",
-      "minAge": 5,
-      "durationH": 3,
-      "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30136/"
     },
     {
       "date": "2026-07-19",
