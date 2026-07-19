@@ -1,7 +1,7 @@
 {
   "date": "2026-07-20",
   "weekday": "Montag",
-  "updatedAt": "2026-07-19T18:01:23.587Z",
+  "updatedAt": "2026-07-19T23:03:20.623Z",
   "tours": [
     {
       "date": "2026-07-20",
@@ -15,7 +15,7 @@
       "minAge": 14,
       "durationH": 6,
       "distanceKm": 2,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-33847/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-33847/"
     },
     {
       "date": "2026-07-20",
@@ -29,7 +29,7 @@
       "minAge": 12,
       "durationH": 3,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30268/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-30268/"
     },
     {
       "date": "2026-07-20",
@@ -43,7 +43,7 @@
       "minAge": 5,
       "durationH": 3,
       "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30137/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-30137/"
     },
     {
       "date": "2026-07-20",
@@ -57,7 +57,7 @@
       "minAge": 12,
       "durationH": 3,
       "distanceKm": 14,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30399/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-30399/"
     },
     {
       "date": "2026-07-20",
@@ -71,7 +71,7 @@
       "minAge": 6,
       "durationH": 3,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30792/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-30792/"
     },
     {
       "date": "2026-07-20",
@@ -85,7 +85,7 @@
       "minAge": 12,
       "durationH": 3,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-31054/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-31054/"
     },
     {
       "date": "2026-07-20",
@@ -93,13 +93,13 @@
       "tourId": "31316",
       "title": "Pure Action",
       "time": "13:30",
-      "anmeldungen": 6,
+      "anmeldungen": 7,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 14,
       "durationH": 3.5,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-31316/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-31316/"
     },
     {
       "date": "2026-07-20",
@@ -113,7 +113,7 @@
       "minAge": 5,
       "durationH": 3,
       "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-30923/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-30923/"
     },
     {
       "date": "2026-07-20",
@@ -127,7 +127,7 @@
       "minAge": 12,
       "durationH": 3,
       "distanceKm": 14,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-31185/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-31185/"
     },
     {
       "date": "2026-07-20",
@@ -141,7 +141,7 @@
       "minAge": 14,
       "durationH": 3,
       "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-31447/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-31447/"
     },
     {
       "date": "2026-07-20",
@@ -155,7 +155,7 @@
       "minAge": 5,
       "durationH": 2,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-19/action-32651/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-20/action-32651/"
     }
   ]
 }
