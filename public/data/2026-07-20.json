@@ -1,7 +1,7 @@
 {
   "date": "2026-07-20",
   "weekday": "Montag",
-  "updatedAt": "2026-07-19T09:50:02.512Z",
+  "updatedAt": "2026-07-19T11:07:52.820Z",
   "tours": [
     {
       "date": "2026-07-20",
@@ -121,7 +121,7 @@
       "tourId": "30399",
       "title": "Rafting Einsteigertour",
       "time": "09:30",
-      "anmeldungen": 8,
+      "anmeldungen": 12,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 12,
@@ -247,7 +247,7 @@
       "tourId": "32651",
       "title": "Waldseilgarten im Verwall",
       "time": "14:00",
-      "anmeldungen": 0,
+      "anmeldungen": 3,
       "kategorie": "Hochseilgarten",
       "location": "St. Anton am Arlberg",
       "minAge": 5,
