@@ -1,7 +1,7 @@
 {
   "date": "2026-07-22",
   "weekday": "Mittwoch",
-  "updatedAt": "2026-07-21T12:23:07.073Z",
+  "updatedAt": "2026-07-21T15:02:31.792Z",
   "tours": [
     {
       "date": "2026-07-22",
@@ -121,7 +121,7 @@
       "tourId": "30794",
       "title": "Familien Canyoning",
       "time": "13:30",
-      "anmeldungen": 16,
+      "anmeldungen": 20,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 6,
@@ -149,7 +149,7 @@
       "tourId": "31318",
       "title": "Pure Action",
       "time": "13:30",
-      "anmeldungen": 3,
+      "anmeldungen": 6,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 14,
@@ -163,7 +163,7 @@
       "tourId": "31187",
       "title": "Rafting Einsteigertour",
       "time": "14:00",
-      "anmeldungen": 14,
+      "anmeldungen": 16,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 12,
