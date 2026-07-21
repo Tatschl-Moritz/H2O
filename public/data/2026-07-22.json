@@ -1,7 +1,7 @@
 {
   "date": "2026-07-22",
   "weekday": "Mittwoch",
-  "updatedAt": "2026-07-21T10:23:30.784Z",
+  "updatedAt": "2026-07-21T12:23:07.073Z",
   "tours": [
     {
       "date": "2026-07-22",
@@ -9,7 +9,7 @@
       "tourId": "30270",
       "title": "Einsteigertour \"Wonderland\"",
       "time": "09:00",
-      "anmeldungen": 10,
+      "anmeldungen": 12,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 12,
@@ -23,7 +23,7 @@
       "tourId": "30008",
       "title": "Familien Canyoning",
       "time": "09:00",
-      "anmeldungen": 7,
+      "anmeldungen": 11,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 6,
