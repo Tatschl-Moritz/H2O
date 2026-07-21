@@ -1,7 +1,7 @@
 {
   "date": "2026-07-22",
   "weekday": "Mittwoch",
-  "updatedAt": "2026-07-21T15:02:31.792Z",
+  "updatedAt": "2026-07-21T17:16:30.992Z",
   "tours": [
     {
       "date": "2026-07-22",
@@ -23,7 +23,7 @@
       "tourId": "30008",
       "title": "Familien Canyoning",
       "time": "09:00",
-      "anmeldungen": 11,
+      "anmeldungen": 15,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 6,
@@ -37,7 +37,7 @@
       "tourId": "30139",
       "title": "Familien-Piratenrafting",
       "time": "09:30",
-      "anmeldungen": 26,
+      "anmeldungen": 34,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 5,
@@ -58,20 +58,6 @@
       "durationH": 6,
       "distanceKm": null,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-07-21/action-33864/"
-    },
-    {
-      "date": "2026-07-22",
-      "weekday": "Mittwoch",
-      "tourId": "30663",
-      "title": "Wildwasser-Kick",
-      "time": "09:30",
-      "anmeldungen": 12,
-      "kategorie": "Rafting",
-      "location": "Ried in Oberinntal",
-      "minAge": 14,
-      "durationH": 3,
-      "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-21/action-30663/"
     },
     {
       "date": "2026-07-22",
@@ -121,27 +107,13 @@
       "tourId": "30794",
       "title": "Familien Canyoning",
       "time": "13:30",
-      "anmeldungen": 20,
+      "anmeldungen": 23,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 6,
       "durationH": 3,
       "distanceKm": null,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-07-21/action-30794/"
-    },
-    {
-      "date": "2026-07-22",
-      "weekday": "Mittwoch",
-      "tourId": "31056",
-      "title": "Einsteigertour \"Wonderland\"",
-      "time": "13:30",
-      "anmeldungen": 0,
-      "kategorie": "Canyoning",
-      "location": "Ried im Oberinntal",
-      "minAge": 12,
-      "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-21/action-31056/"
     },
     {
       "date": "2026-07-22",
@@ -177,27 +149,13 @@
       "tourId": "31449",
       "title": "Wildwasser-Kick",
       "time": "14:00",
-      "anmeldungen": 10,
+      "anmeldungen": 20,
       "kategorie": "Rafting",
       "location": "Ried in Oberinntal",
       "minAge": 14,
       "durationH": 3,
       "distanceKm": 10,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-07-21/action-31449/"
-    },
-    {
-      "date": "2026-07-22",
-      "weekday": "Mittwoch",
-      "tourId": "32376",
-      "title": "River Bug Action Tour",
-      "time": "14:00",
-      "anmeldungen": 0,
-      "kategorie": "Wasser Funsport",
-      "location": "Ried im Oberinntal",
-      "minAge": null,
-      "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-21/action-32376/"
     },
     {
       "date": "2026-07-22",
