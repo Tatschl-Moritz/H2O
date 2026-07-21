@@ -1,7 +1,7 @@
 {
   "date": "2026-07-22",
   "weekday": "Mittwoch",
-  "updatedAt": "2026-07-21T17:16:30.992Z",
+  "updatedAt": "2026-07-21T19:18:15.857Z",
   "tours": [
     {
       "date": "2026-07-22",
@@ -149,7 +149,7 @@
       "tourId": "31449",
       "title": "Wildwasser-Kick",
       "time": "14:00",
-      "anmeldungen": 20,
+      "anmeldungen": 22,
       "kategorie": "Rafting",
       "location": "Ried in Oberinntal",
       "minAge": 14,
