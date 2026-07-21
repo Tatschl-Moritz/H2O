@@ -1,7 +1,7 @@
 {
   "date": "2026-07-22",
   "weekday": "Mittwoch",
-  "updatedAt": "2026-07-21T00:06:19.281Z",
+  "updatedAt": "2026-07-21T07:31:32.622Z",
   "tours": [
     {
       "date": "2026-07-22",
@@ -163,7 +163,7 @@
       "tourId": "30794",
       "title": "Familien Canyoning",
       "time": "13:30",
-      "anmeldungen": 5,
+      "anmeldungen": 8,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 6,
@@ -233,7 +233,7 @@
       "tourId": "32653",
       "title": "Waldseilgarten im Verwall",
       "time": "14:00",
-      "anmeldungen": 4,
+      "anmeldungen": 6,
       "kategorie": "Hochseilgarten",
       "location": "St. Anton am Arlberg",
       "minAge": 5,
