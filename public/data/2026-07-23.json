@@ -1,7 +1,7 @@
 {
   "date": "2026-07-23",
   "weekday": "Donnerstag",
-  "updatedAt": "2026-07-22T00:02:25.863Z",
+  "updatedAt": "2026-07-22T07:33:02.238Z",
   "tours": [
     {
       "date": "2026-07-23",
@@ -205,7 +205,7 @@
       "tourId": "30795",
       "title": "Familien Canyoning",
       "time": "13:30",
-      "anmeldungen": 21,
+      "anmeldungen": 24,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 6,
