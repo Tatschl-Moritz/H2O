@@ -1,0 +1,424 @@
+{
+  "generatedAt": "2026-07-23T20:55:39.184Z",
+  "cutoffHour": 18,
+  "seasons": [
+    {
+      "label": "Gesamt",
+      "zeitraum": {
+        "von": "2026-07-16",
+        "bis": "2026-07-24"
+      },
+      "bookingActivityByHour": [
+        {
+          "hour": 0,
+          "total": 0
+        },
+        {
+          "hour": 1,
+          "total": 0
+        },
+        {
+          "hour": 2,
+          "total": 0
+        },
+        {
+          "hour": 3,
+          "total": 0
+        },
+        {
+          "hour": 4,
+          "total": 0
+        },
+        {
+          "hour": 5,
+          "total": 0
+        },
+        {
+          "hour": 6,
+          "total": 0
+        },
+        {
+          "hour": 7,
+          "total": 0
+        },
+        {
+          "hour": 8,
+          "total": 0
+        },
+        {
+          "hour": 9,
+          "total": 0
+        },
+        {
+          "hour": 10,
+          "total": 2
+        },
+        {
+          "hour": 11,
+          "total": 15
+        },
+        {
+          "hour": 12,
+          "total": 95
+        },
+        {
+          "hour": 13,
+          "total": 24
+        },
+        {
+          "hour": 14,
+          "total": 20
+        },
+        {
+          "hour": 15,
+          "total": 5
+        },
+        {
+          "hour": 16,
+          "total": 10
+        },
+        {
+          "hour": 17,
+          "total": 77
+        }
+      ],
+      "byKategorie": [
+        {
+          "kategorie": "Rafting",
+          "total": 593
+        },
+        {
+          "kategorie": "Canyoning",
+          "total": 324
+        },
+        {
+          "kategorie": "Hochseilgarten",
+          "total": 51
+        },
+        {
+          "kategorie": "Bergabenteuer",
+          "total": 12
+        }
+      ],
+      "byWeekday": [
+        {
+          "weekday": "Montag",
+          "avgTotal": 119
+        },
+        {
+          "weekday": "Dienstag",
+          "avgTotal": 99
+        },
+        {
+          "weekday": "Mittwoch",
+          "avgTotal": 149
+        },
+        {
+          "weekday": "Donnerstag",
+          "avgTotal": 136.5
+        },
+        {
+          "weekday": "Freitag",
+          "avgTotal": 123
+        },
+        {
+          "weekday": "Samstag",
+          "avgTotal": 47
+        },
+        {
+          "weekday": "Sonntag",
+          "avgTotal": 47
+        }
+      ],
+      "topTouren": [
+        {
+          "tour": "Familien-Piratenrafting",
+          "label": "Familientour Rafting",
+          "total": 285
+        },
+        {
+          "tour": "Rafting Einsteigertour",
+          "label": "Rafting Einsteiger",
+          "total": 202
+        },
+        {
+          "tour": "Familien Canyoning",
+          "label": "Familien Canyoning",
+          "total": 180
+        },
+        {
+          "tour": "Wildwasser-Kick",
+          "label": "Wildwasser-Kick",
+          "total": 106
+        },
+        {
+          "tour": "Pure Action",
+          "label": "Pure Action",
+          "total": 74
+        },
+        {
+          "tour": "Einsteigertour \"Wonderland\"",
+          "label": "Wonderland",
+          "total": 69
+        },
+        {
+          "tour": "Waldseilgarten im Verwall",
+          "label": "Waldseilgarten",
+          "total": 51
+        },
+        {
+          "tour": "Klettersteig für Einsteiger und Familien",
+          "label": "Klettersteig Familien",
+          "total": 12
+        }
+      ],
+      "seasonTrend": [
+        {
+          "date": "2026-07-16",
+          "total": 136
+        },
+        {
+          "date": "2026-07-17",
+          "total": 104
+        },
+        {
+          "date": "2026-07-18",
+          "total": 47
+        },
+        {
+          "date": "2026-07-19",
+          "total": 47
+        },
+        {
+          "date": "2026-07-20",
+          "total": 119
+        },
+        {
+          "date": "2026-07-21",
+          "total": 99
+        },
+        {
+          "date": "2026-07-22",
+          "total": 149
+        },
+        {
+          "date": "2026-07-23",
+          "total": 137
+        },
+        {
+          "date": "2026-07-24",
+          "total": 142
+        }
+      ]
+    },
+    {
+      "label": "Sommersaison 26",
+      "zeitraum": {
+        "von": "2026-07-16",
+        "bis": "2026-07-24"
+      },
+      "bookingActivityByHour": [
+        {
+          "hour": 0,
+          "total": 0
+        },
+        {
+          "hour": 1,
+          "total": 0
+        },
+        {
+          "hour": 2,
+          "total": 0
+        },
+        {
+          "hour": 3,
+          "total": 0
+        },
+        {
+          "hour": 4,
+          "total": 0
+        },
+        {
+          "hour": 5,
+          "total": 0
+        },
+        {
+          "hour": 6,
+          "total": 0
+        },
+        {
+          "hour": 7,
+          "total": 0
+        },
+        {
+          "hour": 8,
+          "total": 0
+        },
+        {
+          "hour": 9,
+          "total": 0
+        },
+        {
+          "hour": 10,
+          "total": 2
+        },
+        {
+          "hour": 11,
+          "total": 15
+        },
+        {
+          "hour": 12,
+          "total": 95
+        },
+        {
+          "hour": 13,
+          "total": 24
+        },
+        {
+          "hour": 14,
+          "total": 20
+        },
+        {
+          "hour": 15,
+          "total": 5
+        },
+        {
+          "hour": 16,
+          "total": 10
+        },
+        {
+          "hour": 17,
+          "total": 77
+        }
+      ],
+      "byKategorie": [
+        {
+          "kategorie": "Rafting",
+          "total": 593
+        },
+        {
+          "kategorie": "Canyoning",
+          "total": 324
+        },
+        {
+          "kategorie": "Hochseilgarten",
+          "total": 51
+        },
+        {
+          "kategorie": "Bergabenteuer",
+          "total": 12
+        }
+      ],
+      "byWeekday": [
+        {
+          "weekday": "Montag",
+          "avgTotal": 119
+        },
+        {
+          "weekday": "Dienstag",
+          "avgTotal": 99
+        },
+        {
+          "weekday": "Mittwoch",
+          "avgTotal": 149
+        },
+        {
+          "weekday": "Donnerstag",
+          "avgTotal": 136.5
+        },
+        {
+          "weekday": "Freitag",
+          "avgTotal": 123
+        },
+        {
+          "weekday": "Samstag",
+          "avgTotal": 47
+        },
+        {
+          "weekday": "Sonntag",
+          "avgTotal": 47
+        }
+      ],
+      "topTouren": [
+        {
+          "tour": "Familien-Piratenrafting",
+          "label": "Familientour Rafting",
+          "total": 285
+        },
+        {
+          "tour": "Rafting Einsteigertour",
+          "label": "Rafting Einsteiger",
+          "total": 202
+        },
+        {
+          "tour": "Familien Canyoning",
+          "label": "Familien Canyoning",
+          "total": 180
+        },
+        {
+          "tour": "Wildwasser-Kick",
+          "label": "Wildwasser-Kick",
+          "total": 106
+        },
+        {
+          "tour": "Pure Action",
+          "label": "Pure Action",
+          "total": 74
+        },
+        {
+          "tour": "Einsteigertour \"Wonderland\"",
+          "label": "Wonderland",
+          "total": 69
+        },
+        {
+          "tour": "Waldseilgarten im Verwall",
+          "label": "Waldseilgarten",
+          "total": 51
+        },
+        {
+          "tour": "Klettersteig für Einsteiger und Familien",
+          "label": "Klettersteig Familien",
+          "total": 12
+        }
+      ],
+      "seasonTrend": [
+        {
+          "date": "2026-07-16",
+          "total": 136
+        },
+        {
+          "date": "2026-07-17",
+          "total": 104
+        },
+        {
+          "date": "2026-07-18",
+          "total": 47
+        },
+        {
+          "date": "2026-07-19",
+          "total": 47
+        },
+        {
+          "date": "2026-07-20",
+          "total": 119
+        },
+        {
+          "date": "2026-07-21",
+          "total": 99
+        },
+        {
+          "date": "2026-07-22",
+          "total": 149
+        },
+        {
+          "date": "2026-07-23",
+          "total": 137
+        },
+        {
+          "date": "2026-07-24",
+          "total": 142
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36\" \"https://www.h2o-adventure.at/de/buchen/2026-07-24/\" -o /tmp/claude-1000/-home-rizzi-H2O/ff25d873-0053-46e5-afa4-0895a6820f12/scratchpad/day.html)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36\" \"https://www.h2o-adventure.at/de/buchen/2026-07-19/\" -o /tmp/claude-1000/-home-rizzi-H2O/ff25d873-0053-46e5-afa4-0895a6820f12/scratchpad/day2.html)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.h2o-adventure.at/public/styles/site.css?20250813153709\" -o /tmp/claude-1000/-home-rizzi-H2O/ff25d873-0053-46e5-afa4-0895a6820f12/scratchpad/h2o.css)",
+      "Bash(grep -oE \"\\\\-\\\\-[a-zA-Z0-9-]*:\\\\s*#[0-9a-fA-F]{3,6}\" /tmp/claude-1000/-home-rizzi-H2O/ff25d873-0053-46e5-afa4-0895a6820f12/scratchpad/h2o.css)",
+      "Bash(curl -s http://localhost:5173/ -o /dev/null -w \"index: %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:5173/data/stats.json -o /dev/null -w \"stats: %{http_code}\\\\n\")",
+      "Bash(identify bless.jpeg)",
+      "Bash(node -e \"console.log\\('no imagemagick'\\)\")",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.h2o-adventure.at/de/\" -o /tmp/claude-1000/-home-rizzi-H2O/ff25d873-0053-46e5-afa4-0895a6820f12/scratchpad/home.html)",
+      "WebSearch",
+      "Bash(curl -s \"https://gis.lfrz.gv.at/api/geodata/i000501/ogc/features/v1/collections/i000501:pegelaktuell/items?f=application/json&limit=1000\" -o /tmp/claude-1000/-home-rizzi-H2O/ff25d873-0053-46e5-afa4-0895a6820f12/scratchpad/pegel.json -w \"http: %{http_code}, size: %{size_download}\\\\n\")",
+      "Bash(curl -sL -A \"Mozilla/5.0\" \"https://www.riverapp.net/en/river/51b60958e4b082f2a4737058?tab=gauges&stationId=51b60958e4b082f2a47370ba&z=7\" -o /tmp/claude-1000/-home-rizzi-H2O/ff25d873-0053-46e5-afa4-0895a6820f12/scratchpad/riverapp.html -w \"http:%{http_code} size:%{size_download}\\\\n\")"
+    ]
+  }
+}

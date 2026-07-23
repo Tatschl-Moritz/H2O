@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "scrape": "node scraper.js",
+    "stats": "node buildStats.js",
+    "wasserstand": "node wasserstand.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -12,7 +14,8 @@
   "dependencies": {
     "framer-motion": "^11.3.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
