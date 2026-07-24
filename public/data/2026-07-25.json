@@ -1,7 +1,7 @@
 {
   "date": "2026-07-25",
   "weekday": "Samstag",
-  "updatedAt": "2026-07-24T05:48:07.945Z",
+  "updatedAt": "2026-07-24T08:22:43.426Z",
   "tours": [
     {
       "date": "2026-07-25",
@@ -79,7 +79,7 @@
       "tourId": "30142",
       "title": "Familien-Piratenrafting",
       "time": "09:30",
-      "anmeldungen": 3,
+      "anmeldungen": 11,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 5,
@@ -177,7 +177,7 @@
       "tourId": "32524",
       "title": "Waldseilgarten im Verwall",
       "time": "10:00",
-      "anmeldungen": 0,
+      "anmeldungen": 3,
       "kategorie": "Hochseilgarten",
       "location": "St. Anton am Arlberg",
       "minAge": 5,
@@ -191,7 +191,7 @@
       "tourId": "31321",
       "title": "Pure Action",
       "time": "13:30",
-      "anmeldungen": 0,
+      "anmeldungen": 6,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 14,
