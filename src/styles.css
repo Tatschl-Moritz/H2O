@@ -398,8 +398,9 @@ body {
 
 .pegel-aktuell {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 10px;
+  gap: 4px 10px;
   margin-bottom: 6px;
 }
 

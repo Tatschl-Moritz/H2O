@@ -412,8 +412,8 @@ function Wasserstand() {
       </div>
 
       <p className="stats-note">
-        Inn-Pegel nahe der Imster Schlucht, Quelle: riverapp.net (Hydrographischer
-        Dienst Tirol). Aktualisiert alle 15 Minuten.
+        Pegel von Inn und Malchbach nahe der Imster Schlucht, Quelle: riverapp.net
+        (Hydrographischer Dienst Tirol). Aktualisiert alle 15 Minuten.
       </p>
 
       {snapshot.stationen.map((station) => {
@@ -431,6 +431,11 @@ function Wasserstand() {
           abfluss = <span className="pegel-abfluss">{station.abflussM3s} m³/s</span>;
         }
 
+        let temperatur = null;
+        if (station.temperaturC !== null) {
+          temperatur = <span className="pegel-abfluss">{station.temperaturC} °C</span>;
+        }
+
         return (
           <div className="chart-card" key={station.station}>
             <div className="chart-title">
@@ -439,6 +444,7 @@ function Wasserstand() {
             <div className="pegel-aktuell">
               <span className="pegel-cm">{station.pegelCm} cm</span>
               {abfluss}
+              {temperatur}
             </div>
             <div style={{ width: "100%", height: 160 }}>
               <ResponsiveContainer width="100%" height="100%">
@@ -475,7 +481,7 @@ function Wasserstand() {
 
       <a
         className="pegel-quelle"
-        href="https://www.riverapp.net/en/river/51b60958e4b082f2a4737058"
+        href="https://www.riverapp.net/"
         target="_blank"
         rel="noreferrer noopener"
       >

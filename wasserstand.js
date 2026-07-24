@@ -1,11 +1,11 @@
 // ============================================================================
 // Wasserstand-Abruf
 // ----------------------------------------------------------------------------
-// Holt den aktuellen Pegel/Abfluss fuer mehrere Inn-Messstellen nahe der
-// Imster Schlucht / Ried im Oberinntal von riverapp.net. Die Seite rendert die
-// Werte serverseitig als schema.org-"Dataset"-JSON direkt im HTML (Quelle laut
-// riverapp.net: Hydrographischer Dienst Tirol) - kein Login, kein
-// Javascript-Rendering noetig.
+// Holt aktuellen Pegel/Abfluss/Wassertemperatur fuer mehrere Messstellen
+// (Inn + Malchbach) nahe der Imster Schlucht / Ried im Oberinntal von
+// riverapp.net. Die Seite rendert die Werte serverseitig als schema.org-
+// "Dataset"-JSON direkt im HTML (Quelle laut riverapp.net: Hydrographischer
+// Dienst Tirol) - kein Login, kein Javascript-Rendering noetig.
 //
 // Speichert:
 //   1. Momentaufnahme  -> public/data/wasserstand.json       (aktuelle Werte)
@@ -18,11 +18,11 @@ import { readFile, writeFile } from "node:fs/promises";
 import { config } from "./config.js";
 
 const STATIONEN = [
-  { id: "51b60958e4b082f2a47370ba", name: "Magerbach" },
-  { id: "51b60958e4b082f2a4737086", name: "Landeck-Perjen" },
+  { id: "51b60958e4b082f2a47370ba", name: "Magerbach", gewaesser: "Inn" },
+  { id: "51b60958e4b082f2a4737086", name: "Landeck-Perjen", gewaesser: "Inn" },
+  { id: "5452b67b30042edb2ef484f9", name: "Imst", gewaesser: "Malchbach" },
 ];
 
-const GEWAESSER = "Inn";
 const HISTORY_STUNDEN = 24;
 
 function stationUrl(id) {
@@ -65,14 +65,17 @@ async function holeStation(station) {
   const werte = dataset.variableMeasured || [];
   const abfluss = werte.find((w) => w.name === "Streamflow") || null;
   const pegel = werte.find((w) => w.name === "River stage") || null;
+  const temperatur = werte.find((w) => w.name === "Water temperature") || null;
 
   return {
     station: station.name,
-    gewaesser: GEWAESSER,
+    gewaesser: station.gewaesser,
     pegelCm: pegel ? Math.round(pegel.value) : null,
     pegelGemessenAm: pegel ? pegel.observationDate : null,
     abflussM3s: abfluss ? abfluss.value : null,
     abflussGemessenAm: abfluss ? abfluss.observationDate : null,
+    temperaturC: temperatur ? temperatur.value : null,
+    temperaturGemessenAm: temperatur ? temperatur.observationDate : null,
     quelle: url,
   };
 }
@@ -113,7 +116,9 @@ export async function holeWasserstand() {
       const ergebnis = await holeStation(station);
       stationen.push(ergebnis);
       aktualisiereHistory(history, ergebnis, aktualisiertAm);
-      console.log(`[wasserstand] ${ergebnis.station}: ${ergebnis.pegelCm} cm, ${ergebnis.abflussM3s} m³/s`);
+      console.log(
+        `[wasserstand] ${ergebnis.station}: ${ergebnis.pegelCm} cm, ${ergebnis.abflussM3s} m³/s, ${ergebnis.temperaturC} °C`
+      );
     } catch (error) {
       console.warn(`[wasserstand] ${station.name} fehlgeschlagen: ${error.message}`);
     }
