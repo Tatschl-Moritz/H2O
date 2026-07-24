@@ -1,35 +1,21 @@
 {
   "date": "2026-07-25",
   "weekday": "Samstag",
-  "updatedAt": "2026-07-24T19:20:36.104Z",
+  "updatedAt": "2026-07-24T20:59:04.970Z",
   "tours": [
     {
       "date": "2026-07-25",
       "weekday": "Samstag",
-      "tourId": "33807",
-      "title": "Arlberger Klettersteig",
-      "time": "08:30",
-      "anmeldungen": 0,
-      "kategorie": "Bergabenteuer",
-      "location": "St. Anton am Arlberg",
-      "minAge": 14,
-      "durationH": 6,
-      "distanceKm": 2,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-33807/"
-    },
-    {
-      "date": "2026-07-25",
-      "weekday": "Samstag",
-      "tourId": "30011",
-      "title": "Familien Canyoning",
+      "tourId": "30273",
+      "title": "Einsteigertour \"Wonderland\"",
       "time": "09:00",
-      "anmeldungen": 0,
+      "anmeldungen": 4,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
-      "minAge": 6,
+      "minAge": 12,
       "durationH": 3,
       "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-30011/"
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-30273/"
     },
     {
       "date": "2026-07-25",
@@ -48,30 +34,16 @@
     {
       "date": "2026-07-25",
       "weekday": "Samstag",
-      "tourId": "30273",
-      "title": "Einsteigertour \"Wonderland\"",
-      "time": "09:00",
-      "anmeldungen": 4,
-      "kategorie": "Canyoning",
-      "location": "Ried im Oberinntal",
-      "minAge": 12,
-      "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-30273/"
-    },
-    {
-      "date": "2026-07-25",
-      "weekday": "Samstag",
-      "tourId": "30404",
-      "title": "Rafting Einsteigertour",
+      "tourId": "30142",
+      "title": "Familien-Piratenrafting",
       "time": "09:30",
-      "anmeldungen": 0,
+      "anmeldungen": 15,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
-      "minAge": 12,
+      "minAge": 5,
       "durationH": 3,
-      "distanceKm": 14,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-30404/"
+      "distanceKm": 10,
+      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-30142/"
     },
     {
       "date": "2026-07-25",
@@ -90,20 +62,6 @@
     {
       "date": "2026-07-25",
       "weekday": "Samstag",
-      "tourId": "33867",
-      "title": "Bergabenteuer-Tag",
-      "time": "09:30",
-      "anmeldungen": 0,
-      "kategorie": "Bergabenteuer",
-      "location": "Ried im Oberinntal",
-      "minAge": 12,
-      "durationH": 6,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-33867/"
-    },
-    {
-      "date": "2026-07-25",
-      "weekday": "Samstag",
       "tourId": "32248",
       "title": "River Bug Action Tour",
       "time": "09:30",
@@ -118,20 +76,6 @@
     {
       "date": "2026-07-25",
       "weekday": "Samstag",
-      "tourId": "32782",
-      "title": "Kletterkurs für Anfänger & Familien Ried",
-      "time": "09:30",
-      "anmeldungen": 0,
-      "kategorie": "Bergabenteuer",
-      "location": "Ried im Oberinntal",
-      "minAge": 6,
-      "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-32782/"
-    },
-    {
-      "date": "2026-07-25",
-      "weekday": "Samstag",
       "tourId": "33742",
       "title": "Klettersteig für Einsteiger und Familien",
       "time": "09:30",
@@ -142,20 +86,6 @@
       "durationH": 3,
       "distanceKm": null,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-33742/"
-    },
-    {
-      "date": "2026-07-25",
-      "weekday": "Samstag",
-      "tourId": "30142",
-      "title": "Familien-Piratenrafting",
-      "time": "09:30",
-      "anmeldungen": 15,
-      "kategorie": "Rafting",
-      "location": "Ried im Oberinntal",
-      "minAge": 5,
-      "durationH": 3,
-      "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-24/action-30142/"
     },
     {
       "date": "2026-07-25",
