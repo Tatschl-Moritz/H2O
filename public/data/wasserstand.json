@@ -1,13 +1,13 @@
 {
-  "aktualisiertAm": "2026-07-25T10:14:52.027Z",
+  "aktualisiertAm": "2026-07-25T11:35:24.026Z",
   "stationen": [
     {
       "station": "Magerbach",
       "gewaesser": "Inn",
-      "pegelCm": 186,
-      "pegelGemessenAm": "2026-07-25T10:00:00.000Z",
-      "abflussM3s": 76.4,
-      "abflussGemessenAm": "2026-07-25T08:30:00.000Z",
+      "pegelCm": 168,
+      "pegelGemessenAm": "2026-07-25T11:15:00.000Z",
+      "abflussM3s": 53.6,
+      "abflussGemessenAm": "2026-07-25T10:30:00.000Z",
       "temperaturC": null,
       "temperaturGemessenAm": null,
       "quelle": "https://www.riverapp.net/en/station/51b60958e4b082f2a47370ba"
@@ -16,18 +16,18 @@
       "station": "Landeck-Perjen",
       "gewaesser": "Inn",
       "pegelCm": 220,
-      "pegelGemessenAm": "2026-07-25T10:00:00.000Z",
+      "pegelGemessenAm": "2026-07-25T11:15:00.000Z",
       "abflussM3s": 17,
-      "abflussGemessenAm": "2026-07-25T10:00:00.000Z",
-      "temperaturC": 12.3,
-      "temperaturGemessenAm": "2026-07-25T10:00:00.000Z",
+      "abflussGemessenAm": "2026-07-25T11:15:00.000Z",
+      "temperaturC": 13.2,
+      "temperaturGemessenAm": "2026-07-25T11:15:00.000Z",
       "quelle": "https://www.riverapp.net/en/station/51b60958e4b082f2a4737086"
     },
     {
       "station": "Imst",
       "gewaesser": "Malchbach",
       "pegelCm": 26,
-      "pegelGemessenAm": "2026-07-25T10:00:00.000Z",
+      "pegelGemessenAm": "2026-07-25T11:15:00.000Z",
       "abflussM3s": null,
       "abflussGemessenAm": null,
       "temperaturC": null,
