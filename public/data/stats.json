@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T04:08:21.180Z",
+  "generatedAt": "2026-07-25T07:13:40.889Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -85,7 +85,7 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 691
+          "total": 690
         },
         {
           "kategorie": "Canyoning",
@@ -127,7 +127,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 77.5
+          "avgTotal": 77
         },
         {
           "weekday": "Sonntag",
@@ -153,7 +153,7 @@
         {
           "tour": "Wildwasser-Kick",
           "label": "Wildwasser-Kick",
-          "total": 138
+          "total": 137
         },
         {
           "tour": "Pure Action",
@@ -215,7 +215,7 @@
         },
         {
           "date": "2026-07-25",
-          "total": 108
+          "total": 107
         },
         {
           "date": "2026-07-26",
@@ -306,7 +306,7 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 691
+          "total": 690
         },
         {
           "kategorie": "Canyoning",
@@ -348,7 +348,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 77.5
+          "avgTotal": 77
         },
         {
           "weekday": "Sonntag",
@@ -374,7 +374,7 @@
         {
           "tour": "Wildwasser-Kick",
           "label": "Wildwasser-Kick",
-          "total": 138
+          "total": 137
         },
         {
           "tour": "Pure Action",
@@ -436,7 +436,7 @@
         },
         {
           "date": "2026-07-25",
-          "total": 108
+          "total": 107
         },
         {
           "date": "2026-07-26",
