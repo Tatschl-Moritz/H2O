@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T07:13:40.889Z",
+  "generatedAt": "2026-07-25T09:44:19.203Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -55,7 +55,7 @@
         },
         {
           "hour": 11,
-          "total": 15
+          "total": 20
         },
         {
           "hour": 12,
@@ -85,7 +85,7 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 690
+          "total": 695
         },
         {
           "kategorie": "Canyoning",
@@ -127,7 +127,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 77
+          "avgTotal": 79.5
         },
         {
           "weekday": "Sonntag",
@@ -138,7 +138,7 @@
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 338
+          "total": 343
         },
         {
           "tour": "Familien Canyoning",
@@ -215,7 +215,7 @@
         },
         {
           "date": "2026-07-25",
-          "total": 107
+          "total": 112
         },
         {
           "date": "2026-07-26",
@@ -276,7 +276,7 @@
         },
         {
           "hour": 11,
-          "total": 15
+          "total": 20
         },
         {
           "hour": 12,
@@ -306,7 +306,7 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 690
+          "total": 695
         },
         {
           "kategorie": "Canyoning",
@@ -348,7 +348,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 77
+          "avgTotal": 79.5
         },
         {
           "weekday": "Sonntag",
@@ -359,7 +359,7 @@
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 338
+          "total": 343
         },
         {
           "tour": "Familien Canyoning",
@@ -436,7 +436,7 @@
         },
         {
           "date": "2026-07-25",
-          "total": 107
+          "total": 112
         },
         {
           "date": "2026-07-26",
