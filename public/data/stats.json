@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T13:19:11.555Z",
+  "generatedAt": "2026-07-25T15:00:48.432Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -75,7 +75,7 @@
         },
         {
           "hour": 16,
-          "total": 10
+          "total": 15
         },
         {
           "hour": 17,
@@ -85,11 +85,11 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 706
+          "total": 703
         },
         {
           "kategorie": "Canyoning",
-          "total": 409
+          "total": 405
         },
         {
           "kategorie": "Hochseilgarten",
@@ -131,14 +131,14 @@
         },
         {
           "weekday": "Sonntag",
-          "avgTotal": 49.5
+          "avgTotal": 46
         }
       ],
       "topTouren": [
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 349
+          "total": 346
         },
         {
           "tour": "Familien Canyoning",
@@ -148,12 +148,12 @@
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 220
+          "total": 222
         },
         {
           "tour": "Wildwasser-Kick",
           "label": "Wildwasser-Kick",
-          "total": 137
+          "total": 135
         },
         {
           "tour": "Pure Action",
@@ -163,7 +163,7 @@
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 80
+          "total": 76
         },
         {
           "tour": "Waldseilgarten im Verwall",
@@ -219,7 +219,7 @@
         },
         {
           "date": "2026-07-26",
-          "total": 52
+          "total": 45
         }
       ]
     },
@@ -296,7 +296,7 @@
         },
         {
           "hour": 16,
-          "total": 10
+          "total": 15
         },
         {
           "hour": 17,
@@ -306,11 +306,11 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 706
+          "total": 703
         },
         {
           "kategorie": "Canyoning",
-          "total": 409
+          "total": 405
         },
         {
           "kategorie": "Hochseilgarten",
@@ -352,14 +352,14 @@
         },
         {
           "weekday": "Sonntag",
-          "avgTotal": 49.5
+          "avgTotal": 46
         }
       ],
       "topTouren": [
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 349
+          "total": 346
         },
         {
           "tour": "Familien Canyoning",
@@ -369,12 +369,12 @@
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 220
+          "total": 222
         },
         {
           "tour": "Wildwasser-Kick",
           "label": "Wildwasser-Kick",
-          "total": 137
+          "total": 135
         },
         {
           "tour": "Pure Action",
@@ -384,7 +384,7 @@
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 80
+          "total": 76
         },
         {
           "tour": "Waldseilgarten im Verwall",
@@ -440,7 +440,7 @@
         },
         {
           "date": "2026-07-26",
-          "total": 52
+          "total": 45
         }
       ]
     }
