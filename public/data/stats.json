@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T09:44:19.203Z",
+  "generatedAt": "2026-07-25T11:07:39.512Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -89,7 +89,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 410
+          "total": 409
         },
         {
           "kategorie": "Hochseilgarten",
@@ -127,7 +127,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 79.5
+          "avgTotal": 79
         },
         {
           "weekday": "Sonntag",
@@ -158,7 +158,7 @@
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 99
+          "total": 98
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
@@ -215,7 +215,7 @@
         },
         {
           "date": "2026-07-25",
-          "total": 112
+          "total": 111
         },
         {
           "date": "2026-07-26",
@@ -310,7 +310,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 410
+          "total": 409
         },
         {
           "kategorie": "Hochseilgarten",
@@ -348,7 +348,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 79.5
+          "avgTotal": 79
         },
         {
           "weekday": "Sonntag",
@@ -379,7 +379,7 @@
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 99
+          "total": 98
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
@@ -436,7 +436,7 @@
         },
         {
           "date": "2026-07-25",
-          "total": 112
+          "total": 111
         },
         {
           "date": "2026-07-26",
