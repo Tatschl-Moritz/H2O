@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T13:14:26.918Z",
+  "generatedAt": "2026-07-26T15:03:07.049Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -79,13 +79,13 @@
         },
         {
           "hour": 17,
-          "total": 77
+          "total": 85
         }
       ],
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 753
+          "total": 758
         },
         {
           "kategorie": "Canyoning",
@@ -107,7 +107,7 @@
       "byWeekday": [
         {
           "weekday": "Montag",
-          "avgTotal": 115
+          "avgTotal": 117.5
         },
         {
           "weekday": "Dienstag",
@@ -138,7 +138,7 @@
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 376
+          "total": 378
         },
         {
           "tour": "Familien Canyoning",
@@ -148,7 +148,7 @@
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 230
+          "total": 233
         },
         {
           "tour": "Wildwasser-Kick",
@@ -223,7 +223,7 @@
         },
         {
           "date": "2026-07-27",
-          "total": 111
+          "total": 116
         }
       ]
     },
@@ -304,13 +304,13 @@
         },
         {
           "hour": 17,
-          "total": 77
+          "total": 85
         }
       ],
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 753
+          "total": 758
         },
         {
           "kategorie": "Canyoning",
@@ -332,7 +332,7 @@
       "byWeekday": [
         {
           "weekday": "Montag",
-          "avgTotal": 115
+          "avgTotal": 117.5
         },
         {
           "weekday": "Dienstag",
@@ -363,7 +363,7 @@
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 376
+          "total": 378
         },
         {
           "tour": "Familien Canyoning",
@@ -373,7 +373,7 @@
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 230
+          "total": 233
         },
         {
           "tour": "Wildwasser-Kick",
@@ -448,7 +448,7 @@
         },
         {
           "date": "2026-07-27",
-          "total": 111
+          "total": 116
         }
       ]
     }
