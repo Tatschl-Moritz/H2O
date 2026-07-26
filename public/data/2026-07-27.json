@@ -1,7 +1,7 @@
 {
   "date": "2026-07-27",
   "weekday": "Montag",
-  "updatedAt": "2026-07-26T09:10:06.596Z",
+  "updatedAt": "2026-07-26T11:16:39.802Z",
   "tours": [
     {
       "date": "2026-07-27",
@@ -51,7 +51,7 @@
       "tourId": "30537",
       "title": "Pure Action",
       "time": "09:00",
-      "anmeldungen": 0,
+      "anmeldungen": 2,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 14,
@@ -205,7 +205,7 @@
       "tourId": "30799",
       "title": "Familien Canyoning",
       "time": "13:30",
-      "anmeldungen": 20,
+      "anmeldungen": 24,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 6,
