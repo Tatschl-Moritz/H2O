@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T11:17:26.903Z",
+  "generatedAt": "2026-07-26T13:14:26.918Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -71,7 +71,7 @@
         },
         {
           "hour": 15,
-          "total": 16
+          "total": 28
         },
         {
           "hour": 16,
@@ -85,11 +85,11 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 749
+          "total": 753
         },
         {
           "kategorie": "Canyoning",
-          "total": 453
+          "total": 456
         },
         {
           "kategorie": "Hochseilgarten",
@@ -107,7 +107,7 @@
       "byWeekday": [
         {
           "weekday": "Montag",
-          "avgTotal": 109
+          "avgTotal": 115
         },
         {
           "weekday": "Dienstag",
@@ -131,19 +131,19 @@
         },
         {
           "weekday": "Sonntag",
-          "avgTotal": 47
+          "avgTotal": 44.5
         }
       ],
       "topTouren": [
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 372
+          "total": 376
         },
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 258
+          "total": 261
         },
         {
           "tour": "Rafting Einsteigertour",
@@ -219,11 +219,11 @@
         },
         {
           "date": "2026-07-26",
-          "total": 47
+          "total": 42
         },
         {
           "date": "2026-07-27",
-          "total": 99
+          "total": 111
         }
       ]
     },
@@ -296,7 +296,7 @@
         },
         {
           "hour": 15,
-          "total": 16
+          "total": 28
         },
         {
           "hour": 16,
@@ -310,11 +310,11 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 749
+          "total": 753
         },
         {
           "kategorie": "Canyoning",
-          "total": 453
+          "total": 456
         },
         {
           "kategorie": "Hochseilgarten",
@@ -332,7 +332,7 @@
       "byWeekday": [
         {
           "weekday": "Montag",
-          "avgTotal": 109
+          "avgTotal": 115
         },
         {
           "weekday": "Dienstag",
@@ -356,19 +356,19 @@
         },
         {
           "weekday": "Sonntag",
-          "avgTotal": 47
+          "avgTotal": 44.5
         }
       ],
       "topTouren": [
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 372
+          "total": 376
         },
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 258
+          "total": 261
         },
         {
           "tour": "Rafting Einsteigertour",
@@ -444,11 +444,11 @@
         },
         {
           "date": "2026-07-26",
-          "total": 47
+          "total": 42
         },
         {
           "date": "2026-07-27",
-          "total": 99
+          "total": 111
         }
       ]
     }
