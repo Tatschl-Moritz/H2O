@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T06:34:09.872Z",
+  "generatedAt": "2026-07-26T09:10:53.203Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -55,7 +55,7 @@
         },
         {
           "hour": 11,
-          "total": 20
+          "total": 26
         },
         {
           "hour": 12,
@@ -85,11 +85,11 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 747
+          "total": 749
         },
         {
           "kategorie": "Canyoning",
-          "total": 443
+          "total": 447
         },
         {
           "kategorie": "Hochseilgarten",
@@ -107,7 +107,7 @@
       "byWeekday": [
         {
           "weekday": "Montag",
-          "avgTotal": 103
+          "avgTotal": 106
         },
         {
           "weekday": "Dienstag",
@@ -138,12 +138,12 @@
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 370
+          "total": 372
         },
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 250
+          "total": 254
         },
         {
           "tour": "Rafting Einsteigertour",
@@ -223,7 +223,7 @@
         },
         {
           "date": "2026-07-27",
-          "total": 87
+          "total": 93
         }
       ]
     },
@@ -280,7 +280,7 @@
         },
         {
           "hour": 11,
-          "total": 20
+          "total": 26
         },
         {
           "hour": 12,
@@ -310,11 +310,11 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 747
+          "total": 749
         },
         {
           "kategorie": "Canyoning",
-          "total": 443
+          "total": 447
         },
         {
           "kategorie": "Hochseilgarten",
@@ -332,7 +332,7 @@
       "byWeekday": [
         {
           "weekday": "Montag",
-          "avgTotal": 103
+          "avgTotal": 106
         },
         {
           "weekday": "Dienstag",
@@ -363,12 +363,12 @@
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 370
+          "total": 372
         },
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 250
+          "total": 254
         },
         {
           "tour": "Rafting Einsteigertour",
@@ -448,7 +448,7 @@
         },
         {
           "date": "2026-07-27",
-          "total": 87
+          "total": 93
         }
       ]
     }
