@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T12:19:16.142Z",
+  "generatedAt": "2026-07-27T15:41:16.887Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -85,11 +85,11 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 805
+          "total": 828
         },
         {
           "kategorie": "Canyoning",
-          "total": 507
+          "total": 532
         },
         {
           "kategorie": "Hochseilgarten",
@@ -107,11 +107,11 @@
       "byWeekday": [
         {
           "weekday": "Montag",
-          "avgTotal": 123.5
+          "avgTotal": 125.5
         },
         {
           "weekday": "Dienstag",
-          "avgTotal": 99.5
+          "avgTotal": 121.5
         },
         {
           "weekday": "Mittwoch",
@@ -138,37 +138,37 @@
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 395
+          "total": 406
         },
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 298
+          "total": 307
         },
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 254
+          "total": 260
         },
         {
           "tour": "Wildwasser-Kick",
           "label": "Wildwasser-Kick",
-          "total": 156
+          "total": 162
         },
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 113
+          "total": 125
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 94
+          "total": 98
         },
         {
           "tour": "Waldseilgarten im Verwall",
           "label": "Waldseilgarten",
-          "total": 66
+          "total": 64
         },
         {
           "tour": "Klettersteig für Einsteiger und Familien",
@@ -223,11 +223,11 @@
         },
         {
           "date": "2026-07-27",
-          "total": 128
+          "total": 132
         },
         {
           "date": "2026-07-28",
-          "total": 100
+          "total": 144
         }
       ]
     },
@@ -314,11 +314,11 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 805
+          "total": 828
         },
         {
           "kategorie": "Canyoning",
-          "total": 507
+          "total": 532
         },
         {
           "kategorie": "Hochseilgarten",
@@ -336,11 +336,11 @@
       "byWeekday": [
         {
           "weekday": "Montag",
-          "avgTotal": 123.5
+          "avgTotal": 125.5
         },
         {
           "weekday": "Dienstag",
-          "avgTotal": 99.5
+          "avgTotal": 121.5
         },
         {
           "weekday": "Mittwoch",
@@ -367,37 +367,37 @@
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 395
+          "total": 406
         },
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 298
+          "total": 307
         },
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 254
+          "total": 260
         },
         {
           "tour": "Wildwasser-Kick",
           "label": "Wildwasser-Kick",
-          "total": 156
+          "total": 162
         },
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 113
+          "total": 125
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 94
+          "total": 98
         },
         {
           "tour": "Waldseilgarten im Verwall",
           "label": "Waldseilgarten",
-          "total": 66
+          "total": 64
         },
         {
           "tour": "Klettersteig für Einsteiger und Familien",
@@ -452,11 +452,11 @@
         },
         {
           "date": "2026-07-27",
-          "total": 128
+          "total": 132
         },
         {
           "date": "2026-07-28",
-          "total": 100
+          "total": 144
         }
       ]
     }

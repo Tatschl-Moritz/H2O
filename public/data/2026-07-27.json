@@ -1,7 +1,7 @@
 {
   "date": "2026-07-27",
   "weekday": "Montag",
-  "updatedAt": "2026-07-27T08:28:06.471Z",
+  "updatedAt": "2026-07-27T15:40:25.700Z",
   "tours": [
     {
       "date": "2026-07-27",
@@ -77,7 +77,7 @@
       "date": "2026-07-27",
       "weekday": "Montag",
       "tourId": "32526",
-      "title": "Waldseilgarten im Verwall",
+      "title": "Waldseilgarten im Verwall - täglich von 10 - 16 Uhr GÖFFNET! (OHNE VORANMELDUNG möglich!",
       "time": "10:00",
       "anmeldungen": 0,
       "kategorie": "Hochseilgarten",
@@ -121,7 +121,7 @@
       "tourId": "31323",
       "title": "Pure Action",
       "time": "13:30",
-      "anmeldungen": 11,
+      "anmeldungen": 15,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 14,
@@ -161,7 +161,7 @@
       "date": "2026-07-27",
       "weekday": "Montag",
       "tourId": "32658",
-      "title": "Waldseilgarten im Verwall",
+      "title": "Waldseilgarten im Verwall - täglich von 10 - 16 Uhr GÖFFNET! (OHNE VORANMELDUNG möglich!",
       "time": "14:00",
       "anmeldungen": 0,
       "kategorie": "Hochseilgarten",
