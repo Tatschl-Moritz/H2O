@@ -1,7 +1,7 @@
 {
   "date": "2026-07-28",
   "weekday": "Dienstag",
-  "updatedAt": "2026-07-27T15:40:25.700Z",
+  "updatedAt": "2026-07-27T17:40:02.955Z",
   "tours": [
     {
       "date": "2026-07-28",
@@ -34,24 +34,10 @@
     {
       "date": "2026-07-28",
       "weekday": "Dienstag",
-      "tourId": "30538",
-      "title": "Pure Action",
-      "time": "09:00",
-      "anmeldungen": 4,
-      "kategorie": "Canyoning",
-      "location": "Ried im Oberinntal",
-      "minAge": 14,
-      "durationH": 3.5,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-27/action-30538/"
-    },
-    {
-      "date": "2026-07-28",
-      "weekday": "Dienstag",
       "tourId": "30145",
       "title": "Familien-Piratenrafting",
       "time": "09:30",
-      "anmeldungen": 17,
+      "anmeldungen": 23,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 5,
@@ -163,7 +149,7 @@
       "tourId": "31324",
       "title": "Pure Action",
       "time": "13:30",
-      "anmeldungen": 4,
+      "anmeldungen": 8,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 14,
