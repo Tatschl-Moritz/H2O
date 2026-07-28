@@ -1,7 +1,7 @@
 {
   "date": "2026-07-28",
   "weekday": "Dienstag",
-  "updatedAt": "2026-07-28T09:34:40.077Z",
+  "updatedAt": "2026-07-28T11:55:11.235Z",
   "tours": [
     {
       "date": "2026-07-28",
@@ -149,7 +149,7 @@
       "tourId": "31324",
       "title": "Pure Action",
       "time": "13:30",
-      "anmeldungen": 11,
+      "anmeldungen": 8,
       "kategorie": "Canyoning",
       "location": "Ried im Oberinntal",
       "minAge": 14,
