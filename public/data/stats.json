@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T00:07:07.217Z",
+  "generatedAt": "2026-07-28T03:59:40.316Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -31,7 +31,7 @@
         },
         {
           "hour": 5,
-          "total": 0
+          "total": 1
         },
         {
           "hour": 6,
@@ -89,7 +89,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 575
+          "total": 576
         },
         {
           "kategorie": "Hochseilgarten",
@@ -115,7 +115,7 @@
         },
         {
           "weekday": "Mittwoch",
-          "avgTotal": 123
+          "avgTotal": 123.5
         },
         {
           "weekday": "Donnerstag",
@@ -143,7 +143,7 @@
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 336
+          "total": 337
         },
         {
           "tour": "Rafting Einsteigertour",
@@ -231,7 +231,7 @@
         },
         {
           "date": "2026-07-29",
-          "total": 97
+          "total": 98
         }
       ]
     },
@@ -264,7 +264,7 @@
         },
         {
           "hour": 5,
-          "total": 0
+          "total": 1
         },
         {
           "hour": 6,
@@ -322,7 +322,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 575
+          "total": 576
         },
         {
           "kategorie": "Hochseilgarten",
@@ -348,7 +348,7 @@
         },
         {
           "weekday": "Mittwoch",
-          "avgTotal": 123
+          "avgTotal": 123.5
         },
         {
           "weekday": "Donnerstag",
@@ -376,7 +376,7 @@
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 336
+          "total": 337
         },
         {
           "tour": "Rafting Einsteigertour",
@@ -464,7 +464,7 @@
         },
         {
           "date": "2026-07-29",
-          "total": 97
+          "total": 98
         }
       ]
     }
