@@ -1,7 +1,7 @@
 {
   "date": "2026-07-30",
   "weekday": "Donnerstag",
-  "updatedAt": "2026-07-29T20:10:37.668Z",
+  "updatedAt": "2026-07-29T21:57:51.183Z",
   "tours": [
     {
       "date": "2026-07-30",
@@ -191,12 +191,12 @@
       "tourId": "31457",
       "title": "Wildwasser-Kick",
       "time": "14:00",
-      "anmeldungen": null,
+      "anmeldungen": 7,
       "kategorie": "Rafting",
-      "location": null,
-      "minAge": null,
-      "durationH": null,
-      "distanceKm": null,
+      "location": "Ried in Oberinntal",
+      "minAge": 14,
+      "durationH": 3,
+      "distanceKm": 10,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-07-29/action-31457/"
     },
     {

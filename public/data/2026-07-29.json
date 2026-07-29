@@ -1,7 +1,7 @@
 {
   "date": "2026-07-29",
   "weekday": "Mittwoch",
-  "updatedAt": "2026-07-29T20:10:37.668Z",
+  "updatedAt": "2026-07-29T21:57:51.183Z",
   "tours": [
     {
       "date": "2026-07-29",
@@ -23,11 +23,11 @@
       "tourId": "30277",
       "title": "Einsteigertour \"Wonderland\"",
       "time": "09:00",
-      "anmeldungen": 6,
+      "anmeldungen": null,
       "kategorie": "Canyoning",
-      "location": "Ried im Oberinntal",
-      "minAge": 12,
-      "durationH": 3,
+      "location": null,
+      "minAge": null,
+      "durationH": null,
       "distanceKm": null,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-07-29/action-30277/"
     },
