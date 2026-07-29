@@ -1,7 +1,7 @@
 {
   "date": "2026-07-30",
   "weekday": "Donnerstag",
-  "updatedAt": "2026-07-29T02:34:01.615Z",
+  "updatedAt": "2026-07-29T05:49:07.302Z",
   "tours": [
     {
       "date": "2026-07-30",
@@ -79,7 +79,7 @@
       "tourId": "32787",
       "title": "Kletterkurs für Anfänger & Familien Ried",
       "time": "09:30",
-      "anmeldungen": 0,
+      "anmeldungen": 1,
       "kategorie": "Bergabenteuer",
       "location": "Ried im Oberinntal",
       "minAge": 6,
