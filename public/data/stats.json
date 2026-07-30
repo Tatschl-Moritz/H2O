@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T23:02:11.783Z",
+  "generatedAt": "2026-07-30T02:05:57.853Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -27,7 +27,7 @@
         },
         {
           "hour": 4,
-          "total": 0
+          "total": 2
         },
         {
           "hour": 5,
@@ -89,7 +89,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 690
+          "total": 683
         },
         {
           "kategorie": "Hochseilgarten",
@@ -97,7 +97,7 @@
         },
         {
           "kategorie": "Bergabenteuer",
-          "total": 43
+          "total": 44
         },
         {
           "kategorie": "Wasser Funsport",
@@ -123,7 +123,7 @@
         },
         {
           "weekday": "Freitag",
-          "avgTotal": 125.3
+          "avgTotal": 123.3
         },
         {
           "weekday": "Samstag",
@@ -158,12 +158,12 @@
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 153
+          "total": 156
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 119
+          "total": 109
         },
         {
           "tour": "Waldseilgarten im Verwall",
@@ -239,7 +239,7 @@
         },
         {
           "date": "2026-07-31",
-          "total": 78
+          "total": 72
         }
       ]
     },
@@ -268,7 +268,7 @@
         },
         {
           "hour": 4,
-          "total": 0
+          "total": 2
         },
         {
           "hour": 5,
@@ -330,7 +330,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 690
+          "total": 683
         },
         {
           "kategorie": "Hochseilgarten",
@@ -338,7 +338,7 @@
         },
         {
           "kategorie": "Bergabenteuer",
-          "total": 43
+          "total": 44
         },
         {
           "kategorie": "Wasser Funsport",
@@ -364,7 +364,7 @@
         },
         {
           "weekday": "Freitag",
-          "avgTotal": 125.3
+          "avgTotal": 123.3
         },
         {
           "weekday": "Samstag",
@@ -399,12 +399,12 @@
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 153
+          "total": 156
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 119
+          "total": 109
         },
         {
           "tour": "Waldseilgarten im Verwall",
@@ -480,7 +480,7 @@
         },
         {
           "date": "2026-07-31",
-          "total": 78
+          "total": 72
         }
       ]
     }
