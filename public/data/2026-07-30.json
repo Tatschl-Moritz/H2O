@@ -1,7 +1,7 @@
 {
   "date": "2026-07-30",
   "weekday": "Donnerstag",
-  "updatedAt": "2026-07-30T08:20:44.965Z",
+  "updatedAt": "2026-07-30T11:04:32.987Z",
   "tours": [
     {
       "date": "2026-07-30",
@@ -163,7 +163,7 @@
       "tourId": "30933",
       "title": "Familien-Piratenrafting",
       "time": "14:00",
-      "anmeldungen": 19,
+      "anmeldungen": 22,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 5,
@@ -177,7 +177,7 @@
       "tourId": "31195",
       "title": "Rafting Einsteigertour",
       "time": "14:00",
-      "anmeldungen": 23,
+      "anmeldungen": 27,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 12,

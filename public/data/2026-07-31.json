@@ -1,7 +1,7 @@
 {
   "date": "2026-07-31",
   "weekday": "Freitag",
-  "updatedAt": "2026-07-30T08:20:44.965Z",
+  "updatedAt": "2026-07-30T11:04:32.987Z",
   "tours": [
     {
       "date": "2026-07-31",
@@ -93,7 +93,7 @@
       "tourId": "30410",
       "title": "Rafting Einsteigertour",
       "time": "09:30",
-      "anmeldungen": 0,
+      "anmeldungen": 5,
       "kategorie": "Rafting",
       "location": "Ried im Oberinntal",
       "minAge": 12,
