@@ -1,7 +1,7 @@
 {
   "date": "2026-07-31",
   "weekday": "Freitag",
-  "updatedAt": "2026-07-30T15:50:26.851Z",
+  "updatedAt": "2026-07-30T17:23:32.941Z",
   "tours": [
     {
       "date": "2026-07-31",
@@ -142,20 +142,6 @@
       "durationH": 2,
       "distanceKm": null,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-07-30/action-32530/"
-    },
-    {
-      "date": "2026-07-31",
-      "weekday": "Freitag",
-      "tourId": "31327",
-      "title": "Pure Action",
-      "time": "13:30",
-      "anmeldungen": 3,
-      "kategorie": "Canyoning",
-      "location": "Ried im Oberinntal",
-      "minAge": 14,
-      "durationH": 3.5,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-07-30/action-31327/"
     },
     {
       "date": "2026-07-31",
