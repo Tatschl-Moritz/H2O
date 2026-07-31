@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T11:57:26.591Z",
+  "generatedAt": "2026-07-31T14:07:33.381Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -75,7 +75,7 @@
         },
         {
           "hour": 16,
-          "total": 31
+          "total": 37
         },
         {
           "hour": 17,
@@ -89,7 +89,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 779
+          "total": 785
         },
         {
           "kategorie": "Hochseilgarten",
@@ -127,7 +127,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 75.7
+          "avgTotal": 77.7
         },
         {
           "weekday": "Sonntag",
@@ -163,7 +163,7 @@
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 134
+          "total": 140
         },
         {
           "tour": "Waldseilgarten im Verwall",
@@ -243,7 +243,7 @@
         },
         {
           "date": "2026-08-01",
-          "total": 69
+          "total": 75
         }
       ]
     },
@@ -320,7 +320,7 @@
         },
         {
           "hour": 16,
-          "total": 31
+          "total": 37
         },
         {
           "hour": 17,
@@ -334,7 +334,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 779
+          "total": 785
         },
         {
           "kategorie": "Hochseilgarten",
@@ -372,7 +372,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 75.7
+          "avgTotal": 77.7
         },
         {
           "weekday": "Sonntag",
@@ -408,7 +408,7 @@
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 134
+          "total": 140
         },
         {
           "tour": "Waldseilgarten im Verwall",
@@ -488,7 +488,7 @@
         },
         {
           "date": "2026-08-01",
-          "total": 69
+          "total": 75
         }
       ]
     }
