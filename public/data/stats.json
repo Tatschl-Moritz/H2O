@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-31T20:17:58.683Z",
+  "generatedAt": "2026-07-31T22:03:22.698Z",
   "cutoffHour": 18,
   "seasons": [
     {
       "label": "Gesamt",
       "zeitraum": {
         "von": "2026-07-16",
-        "bis": "2026-08-01"
+        "bis": "2026-08-02"
       },
       "bookingActivityByHour": [
         {
@@ -85,15 +85,15 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 1135
+          "total": 1160
         },
         {
           "kategorie": "Canyoning",
-          "total": 785
+          "total": 795
         },
         {
           "kategorie": "Hochseilgarten",
-          "total": 81
+          "total": 83
         },
         {
           "kategorie": "Bergabenteuer",
@@ -127,28 +127,28 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 77.7
+          "avgTotal": 78.7
         },
         {
           "weekday": "Sonntag",
-          "avgTotal": 44.5
+          "avgTotal": 41
         }
       ],
       "topTouren": [
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 579
+          "total": 601
         },
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 480
+          "total": 484
         },
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 345
+          "total": 348
         },
         {
           "tour": "Wildwasser-Kick",
@@ -158,12 +158,12 @@
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 163
+          "total": 164
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 140
+          "total": 145
         },
         {
           "tour": "Waldseilgarten im Verwall",
@@ -243,7 +243,11 @@
         },
         {
           "date": "2026-08-01",
-          "total": 75
+          "total": 78
+        },
+        {
+          "date": "2026-08-02",
+          "total": 34
         }
       ]
     },
@@ -251,7 +255,7 @@
       "label": "Sommersaison 26",
       "zeitraum": {
         "von": "2026-07-16",
-        "bis": "2026-08-01"
+        "bis": "2026-08-02"
       },
       "bookingActivityByHour": [
         {
@@ -330,15 +334,15 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 1135
+          "total": 1160
         },
         {
           "kategorie": "Canyoning",
-          "total": 785
+          "total": 795
         },
         {
           "kategorie": "Hochseilgarten",
-          "total": 81
+          "total": 83
         },
         {
           "kategorie": "Bergabenteuer",
@@ -372,28 +376,28 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 77.7
+          "avgTotal": 78.7
         },
         {
           "weekday": "Sonntag",
-          "avgTotal": 44.5
+          "avgTotal": 41
         }
       ],
       "topTouren": [
         {
           "tour": "Familien-Piratenrafting",
           "label": "Familientour Rafting",
-          "total": 579
+          "total": 601
         },
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 480
+          "total": 484
         },
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 345
+          "total": 348
         },
         {
           "tour": "Wildwasser-Kick",
@@ -403,12 +407,12 @@
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 163
+          "total": 164
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
           "label": "Wonderland",
-          "total": 140
+          "total": 145
         },
         {
           "tour": "Waldseilgarten im Verwall",
@@ -488,7 +492,11 @@
         },
         {
           "date": "2026-08-01",
-          "total": 75
+          "total": 78
+        },
+        {
+          "date": "2026-08-02",
+          "total": 34
         }
       ]
     }
