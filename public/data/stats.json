@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T09:04:26.860Z",
+  "generatedAt": "2026-08-01T11:15:08.921Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -63,7 +63,7 @@
         },
         {
           "hour": 13,
-          "total": 88
+          "total": 94
         },
         {
           "hour": 14,
@@ -85,7 +85,7 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 1160
+          "total": 1166
         },
         {
           "kategorie": "Canyoning",
@@ -127,7 +127,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 78.7
+          "avgTotal": 80.7
         },
         {
           "weekday": "Sonntag",
@@ -148,7 +148,7 @@
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 348
+          "total": 354
         },
         {
           "tour": "Wildwasser-Kick",
@@ -243,7 +243,7 @@
         },
         {
           "date": "2026-08-01",
-          "total": 78
+          "total": 84
         },
         {
           "date": "2026-08-02",
@@ -312,7 +312,7 @@
         },
         {
           "hour": 13,
-          "total": 88
+          "total": 94
         },
         {
           "hour": 14,
@@ -334,7 +334,7 @@
       "byKategorie": [
         {
           "kategorie": "Rafting",
-          "total": 1160
+          "total": 1166
         },
         {
           "kategorie": "Canyoning",
@@ -376,7 +376,7 @@
         },
         {
           "weekday": "Samstag",
-          "avgTotal": 78.7
+          "avgTotal": 80.7
         },
         {
           "weekday": "Sonntag",
@@ -397,7 +397,7 @@
         {
           "tour": "Rafting Einsteigertour",
           "label": "Rafting Einsteiger",
-          "total": 348
+          "total": 354
         },
         {
           "tour": "Wildwasser-Kick",
@@ -492,7 +492,7 @@
         },
         {
           "date": "2026-08-01",
-          "total": 78
+          "total": 84
         },
         {
           "date": "2026-08-02",
