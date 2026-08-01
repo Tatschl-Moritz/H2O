@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T06:26:45.793Z",
+  "generatedAt": "2026-08-01T09:04:26.860Z",
   "cutoffHour": 18,
   "seasons": [
     {
@@ -55,7 +55,7 @@
         },
         {
           "hour": 11,
-          "total": 47
+          "total": 52
         },
         {
           "hour": 12,
@@ -89,7 +89,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 795
+          "total": 800
         },
         {
           "kategorie": "Hochseilgarten",
@@ -131,7 +131,7 @@
         },
         {
           "weekday": "Sonntag",
-          "avgTotal": 41
+          "avgTotal": 42.7
         }
       ],
       "topTouren": [
@@ -143,7 +143,7 @@
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 484
+          "total": 488
         },
         {
           "tour": "Rafting Einsteigertour",
@@ -158,7 +158,7 @@
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 164
+          "total": 165
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
@@ -247,7 +247,7 @@
         },
         {
           "date": "2026-08-02",
-          "total": 34
+          "total": 39
         }
       ]
     },
@@ -304,7 +304,7 @@
         },
         {
           "hour": 11,
-          "total": 47
+          "total": 52
         },
         {
           "hour": 12,
@@ -338,7 +338,7 @@
         },
         {
           "kategorie": "Canyoning",
-          "total": 795
+          "total": 800
         },
         {
           "kategorie": "Hochseilgarten",
@@ -380,7 +380,7 @@
         },
         {
           "weekday": "Sonntag",
-          "avgTotal": 41
+          "avgTotal": 42.7
         }
       ],
       "topTouren": [
@@ -392,7 +392,7 @@
         {
           "tour": "Familien Canyoning",
           "label": "Familien Canyoning",
-          "total": 484
+          "total": 488
         },
         {
           "tour": "Rafting Einsteigertour",
@@ -407,7 +407,7 @@
         {
           "tour": "Pure Action",
           "label": "Pure Action",
-          "total": 164
+          "total": 165
         },
         {
           "tour": "Einsteigertour \"Wonderland\"",
@@ -496,7 +496,7 @@
         },
         {
           "date": "2026-08-02",
-          "total": 34
+          "total": 39
         }
       ]
     }
