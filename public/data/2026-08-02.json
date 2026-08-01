@@ -1,22 +1,8 @@
 {
   "date": "2026-08-02",
   "weekday": "Sonntag",
-  "updatedAt": "2026-08-01T16:03:10.692Z",
+  "updatedAt": "2026-08-01T17:57:45.388Z",
   "tours": [
-    {
-      "date": "2026-08-02",
-      "weekday": "Sonntag",
-      "tourId": "33819",
-      "title": "Arlberger Klettersteig",
-      "time": "08:30",
-      "anmeldungen": 0,
-      "kategorie": "Bergabenteuer",
-      "location": "St. Anton am Arlberg",
-      "minAge": 14,
-      "durationH": 6,
-      "distanceKm": 2,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-33819/"
-    },
     {
       "date": "2026-08-02",
       "weekday": "Sonntag",
@@ -48,76 +34,6 @@
     {
       "date": "2026-08-02",
       "weekday": "Sonntag",
-      "tourId": "30412",
-      "title": "Rafting Einsteigertour",
-      "time": "09:30",
-      "anmeldungen": 0,
-      "kategorie": "Rafting",
-      "location": "Ried im Oberinntal",
-      "minAge": 12,
-      "durationH": 3,
-      "distanceKm": 14,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-30412/"
-    },
-    {
-      "date": "2026-08-02",
-      "weekday": "Sonntag",
-      "tourId": "30674",
-      "title": "Wildwasser-Kick",
-      "time": "09:30",
-      "anmeldungen": 0,
-      "kategorie": "Rafting",
-      "location": "Ried in Oberinntal",
-      "minAge": 14,
-      "durationH": 3,
-      "distanceKm": 10,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-30674/"
-    },
-    {
-      "date": "2026-08-02",
-      "weekday": "Sonntag",
-      "tourId": "32256",
-      "title": "River Bug Action Tour",
-      "time": "09:30",
-      "anmeldungen": 0,
-      "kategorie": "Wasser Funsport",
-      "location": "Ried im Oberinntal",
-      "minAge": null,
-      "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-32256/"
-    },
-    {
-      "date": "2026-08-02",
-      "weekday": "Sonntag",
-      "tourId": "32790",
-      "title": "Kletterkurs für Anfänger & Familien Ried",
-      "time": "09:30",
-      "anmeldungen": 0,
-      "kategorie": "Bergabenteuer",
-      "location": "Ried im Oberinntal",
-      "minAge": 6,
-      "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-32790/"
-    },
-    {
-      "date": "2026-08-02",
-      "weekday": "Sonntag",
-      "tourId": "32907",
-      "title": "Klettersteig für Einsteiger und Familien",
-      "time": "09:30",
-      "anmeldungen": 0,
-      "kategorie": "Bergabenteuer",
-      "location": "Quarzitwand Burg Laudeck",
-      "minAge": 6,
-      "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-32907/"
-    },
-    {
-      "date": "2026-08-02",
-      "weekday": "Sonntag",
       "tourId": "32532",
       "title": "Waldseilgarten im Verwall - täglich von 10 - 16 Uhr GÖFFNET! (OHNE VORANMELDUNG möglich!",
       "time": "10:00",
@@ -128,20 +44,6 @@
       "durationH": 2,
       "distanceKm": null,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-32532/"
-    },
-    {
-      "date": "2026-08-02",
-      "weekday": "Sonntag",
-      "tourId": "30805",
-      "title": "Familien Canyoning",
-      "time": "13:30",
-      "anmeldungen": 0,
-      "kategorie": "Canyoning",
-      "location": "Ried im Oberinntal",
-      "minAge": 6,
-      "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-30805/"
     },
     {
       "date": "2026-08-02",
@@ -170,20 +72,6 @@
       "durationH": 3,
       "distanceKm": 10,
       "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-30936/"
-    },
-    {
-      "date": "2026-08-02",
-      "weekday": "Sonntag",
-      "tourId": "32387",
-      "title": "River Bug Action Tour",
-      "time": "14:00",
-      "anmeldungen": 0,
-      "kategorie": "Wasser Funsport",
-      "location": "Ried im Oberinntal",
-      "minAge": null,
-      "durationH": 3,
-      "distanceKm": null,
-      "url": "https://www.h2o-adventure.at/de/buchen/2026-08-01/action-32387/"
     },
     {
       "date": "2026-08-02",
