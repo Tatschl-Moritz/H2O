@@ -1,13 +1,13 @@
 {
-  "aktualisiertAm": "2026-08-02T07:15:49.183Z",
+  "aktualisiertAm": "2026-08-02T09:29:01.457Z",
   "stationen": [
     {
       "station": "Magerbach",
       "gewaesser": "Inn",
-      "pegelCm": 229,
-      "pegelGemessenAm": "2026-08-02T07:00:00.000Z",
-      "abflussM3s": 127,
-      "abflussGemessenAm": "2026-08-02T05:30:00.000Z",
+      "pegelCm": 201,
+      "pegelGemessenAm": "2026-08-02T09:15:00.000Z",
+      "abflussM3s": 83.8,
+      "abflussGemessenAm": "2026-08-02T08:30:00.000Z",
       "temperaturC": null,
       "temperaturGemessenAm": null,
       "quelle": "https://www.riverapp.net/en/station/51b60958e4b082f2a47370ba"
@@ -15,12 +15,12 @@
     {
       "station": "Landeck-Perjen",
       "gewaesser": "Inn",
-      "pegelCm": 221,
-      "pegelGemessenAm": "2026-08-02T07:00:00.000Z",
-      "abflussM3s": 17.8,
-      "abflussGemessenAm": "2026-08-02T07:00:00.000Z",
-      "temperaturC": 12.8,
-      "temperaturGemessenAm": "2026-08-02T07:00:00.000Z",
+      "pegelCm": 217,
+      "pegelGemessenAm": "2026-08-02T09:00:00.000Z",
+      "abflussM3s": 16,
+      "abflussGemessenAm": "2026-08-02T09:00:00.000Z",
+      "temperaturC": 13.5,
+      "temperaturGemessenAm": "2026-08-02T09:00:00.000Z",
       "quelle": "https://www.riverapp.net/en/station/51b60958e4b082f2a4737086"
     },
     {
