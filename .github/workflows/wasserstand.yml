@@ -1,14 +1,10 @@
 name: Wasserstand
 
-# UEBERGANGSWEISE: siehe scrape.yml - der Worker-Container auf dem
-# Hetzner-Server macht das Gleiche minutengenau ohne Git. Erst deaktivieren
-# ("schedule:" entfernen, workflow_dispatch behalten), wenn der Worker
-# bestaetigt zuverlaessig laeuft.
+# Siehe scrape.yml - der Worker-Container auf dem Hetzner-Server macht das
+# Gleiche minutengenau ohne Git. Scheduled Trigger deaktiviert (bestaetigt
+# stabil seit dem Umstieg); workflow_dispatch bleibt als manueller
+# Notfall-Fallback erhalten.
 on:
-  schedule:
-    # Alle 15 Minuten, unabhaengig vom Tour-Scraper - Pegel kann sich schneller
-    # aendern als Anmeldezahlen, v.a. bei Regen/Schneeschmelze.
-    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
