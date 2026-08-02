@@ -260,7 +260,10 @@ body {
 }
 
 .refresh-icon.spinning {
-  animation: spin 0.6s linear;
+  /* Laeuft jetzt einen echten Scrape (POST /api/refresh), kein sofortiger
+     Re-Fetch mehr - kann mehrere Sekunden dauern, daher endlos statt
+     einmalig drehen, solange refreshing=true ist. */
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
@@ -270,6 +273,26 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.refresh-meta,
+.refresh-error {
+  margin: 8px auto 0;
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.refresh-meta {
+  color: var(--muted);
+}
+
+.refresh-error {
+  /* Bleibt innerhalb der 2-Farben-Regel (kein Rot/Blau fuer Fehler) - fg statt
+     muted, damit es sich trotzdem vom normalen Text abhebt. */
+  color: var(--fg);
 }
 
 /* --- Tour-Liste --- */

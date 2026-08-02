@@ -1,0 +1,37 @@
+server {
+    listen 80;
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # Daten kommen aus dem gemeinsamen Volume (vom Worker-Container befuellt),
+    # nicht aus dem Image - deshalb alias statt root-relativem Pfad.
+    location /data/ {
+        alias /shared/data/;
+        add_header Cache-Control "no-cache";
+    }
+
+    location /history/ {
+        alias /shared/history/;
+        add_header Cache-Control "no-cache";
+    }
+
+    # Manueller Refresh-Button: proxied zum worker-Container, der dort NIE
+    # einen Port veroeffentlicht/an Coolify's Proxy haengt - erreichbar nur
+    # ueber diesen Weg (also automatisch same-origin fuer den Browser).
+    # ${INTERNAL_API_SECRET} wird von nginx' eigenem envsubst-on-templates
+    # Mechanismus beim Containerstart aus der Umgebungsvariable eingesetzt
+    # (siehe Dockerfile.web) - der Client kann diesen Header nicht faelschen,
+    # proxy_set_header ueberschreibt ihn immer.
+    location /api/ {
+        proxy_pass http://worker:3000/api/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Internal-Secret "${INTERNAL_API_SECRET}";
+        proxy_read_timeout 60s;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}

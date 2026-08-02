@@ -7,12 +7,15 @@
     "scrape": "node scraper.js",
     "stats": "node buildStats.js",
     "wasserstand": "node wasserstand.js",
+    "worker": "node worker/server.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "framer-motion": "^11.3.0",
+    "node-cron": "^4.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recharts": "^2.12.7"

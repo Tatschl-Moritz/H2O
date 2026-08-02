@@ -11,7 +11,7 @@ No login, no booking-system access needed on the day: just a phone or a laptop a
 - **Heute / Morgen** — every tour running today or tomorrow, sorted Rafting → Canyoning → everything else, with a live "water level" bar showing how full each tour is relative to the fullest one that day.
 - **Statistik** — when do people actually book (by hour of day), which category and tour are most popular, which weekdays are busiest, and how bookings trend over the season. Only counts scrapes taken before 18:00 local time, since anything later can be manually adjusted by staff and isn't a real customer booking anymore.
 - **Wasserstand** — current water level (cm) and discharge (m³/s) of the Inn near the Imster Schlucht, plus a 24h trend line per gauge, sourced from the official Tyrolean hydrographic service.
-- **Aktualisieren button** — re-fetches whatever is already on the server (with a cache-busting timestamp so no stale copy is served). **It does not trigger a new scrape.** New numbers only ever come from the `worker` container's own schedule (hourly / every 15 min, see below); the button just pulls the latest already-written snapshot into the browser sooner than the next automatic reload would.
+- **Aktualisieren button** — triggers a real, immediate scrape (today/tomorrow's tours + water level) via `POST /api/refresh`, then reloads the display with a cache-busting timestamp. This is a genuine on-demand fetch, not just a page re-read — but it runs in **manual mode**: it updates what's currently on screen and nothing else. It never writes a history line and never touches `stats.json`, so it can never skew the Statistik data no matter how often it's clicked. See [Manual refresh API](#manual-refresh-api) below.
 
 | Booking list | Statistics |
 |---|---|
@@ -36,19 +36,27 @@ There's no database — it's a static site (Vite + React) backed by a handful of
                     └───────────────▲────────────────┘
                        writes only  │   reads only (nginx alias)
                                     │
-   worker (crond, Europe/Vienna)   │        web (nginx, static build)
-   scraper.js + buildStats.js  ────┘        serves dist/ + /data/ + /history/
-   hourly on the hour                       reachable via Coolify's proxy
-   wasserstand.js every 15 min
+   worker (node-cron, Express)     │        web (nginx, static build)
+   scheduled: scraper.js+buildStats│        serves dist/ + /data/ + /history/
+     hourly, wasserstand /15min    │        proxies /api/ -> worker:3000
+   manual: POST /api/refresh   ────┘        reachable via Coolify's proxy
+     (no history/stats writes)
 ```
 
-The **worker** container never talks to Git — it just writes JSON straight to the volume, atomically (temp file + rename, see `lib/atomicWrite.js`) so the **web** container's nginx never serves a half-written file. The **web** container only ever reads that volume; it never writes to it.
+The **worker** container never talks to Git — it just writes JSON straight to the volume, atomically (temp file + rename, see `lib/atomicWrite.js`) so the **web** container's nginx never serves a half-written file. The **web** container only ever reads that volume for `/data/`/`/history/`; the one thing it writes is nothing — it just proxies `/api/refresh` through to the worker.
 
-| Script | Runs | What it does |
+Every run has a **mode** — `scheduled` or `manual` — which controls a single flag, `persistHistory`, threaded through `runScrape()`/`holeWasserstand()` (see `scraper.js`, `wasserstand.js`). This is the one thing that decides whether a run is allowed to touch history/stats:
+
+| Mode | Triggered by | `persistHistory` | Writes `<date>.json` / `wasserstand.json` (current state) | Writes `history/*.jsonl` / `wasserstand-history.json` | Runs `buildStats.js` |
+|---|---|:---:|:---:|:---:|:---:|
+| `scheduled` | node-cron, in `worker/server.js` | `true` | ✅ | ✅ | ✅ |
+| `manual` | `POST /api/refresh` (the button) | `false` | ✅ | ❌ never | ❌ never |
+
+| Script | Scheduled cadence | What it does |
 |---|---|---|
-| `scraper.js` | hourly, on the hour | Scrapes today's and tomorrow's tour program from h2o-adventure.at (title, category, time, location, current registrations) and appends one line per tour to `<historyDir>/<date>.jsonl`. |
-| `buildStats.js` | right after every scrape | Aggregates the full history into `<dataDir>/stats.json` — booking activity by hour, category/weekday/season breakdowns, top tours — grouped by season, cutoff at 18:00. |
-| `wasserstand.js` | every 15 minutes | Pulls the current water level/discharge for two Inn gauges near the Imster Schlucht from [riverapp.net](https://www.riverapp.net) (source: Hydrographischer Dienst Tirol) and keeps a rolling 24h history. |
+| `scraper.js` | hourly, on the hour | Scrapes today's and tomorrow's tour program from h2o-adventure.at (title, category, time, location, current registrations). `persistHistory:true` additionally appends one line per tour to `<historyDir>/<date>.jsonl`. |
+| `buildStats.js` | right after every **scheduled** scrape only | Aggregates the full history into `<dataDir>/stats.json` — booking activity by hour, category/weekday/season breakdowns, top tours — grouped by season, cutoff at 18:00. Never runs for a manual refresh. |
+| `wasserstand.js` | every 15 minutes | Pulls the current water level/discharge for two Inn gauges near the Imster Schlucht from [riverapp.net](https://www.riverapp.net) (source: Hydrographischer Dienst Tirol). `persistHistory:true` additionally folds the reading into the rolling 24h `wasserstand-history.json`. |
 
 `<dataDir>`/`<historyDir>` are `./public/data`/`./public/history` by default (used for local dev) or `/shared/data`/`/shared/history` inside the worker container, controlled by the `H2O_DATA_DIR`/`H2O_HISTORY_DIR` env vars (see `config.js`).
 
@@ -60,7 +68,7 @@ The **worker** container never talks to Git — it just writes JSON straight to 
 - [Framer Motion](https://www.framer.com/motion/) — the animated tab pill, number transitions
 - [Recharts](https://recharts.org) — all charts
 - [Cheerio](https://cheerio.js.org) — HTML parsing in the scraper
-- Plain Node scripts, run on a schedule by a dedicated `worker` container (real `crond`) — the entire "backend"
+- Plain Node scripts, run on a schedule (`node-cron`) and on demand ([Express](https://expressjs.com), `POST /api/refresh`) by a dedicated `worker` container — the entire "backend"
 - Docker + [Coolify](https://coolify.io) — hosting (self-hosted on Hetzner Cloud), `web` redeploys automatically on every push to `main`
 
 Design is deliberately two-color (dark gray + white) with one small branded exception (H2O's own blue, for the "new" badges), typeset in Geist, Space Grotesk, Milker and JetBrains Mono.
@@ -93,34 +101,51 @@ Two containers, one shared volume, no Git involved in serving or producing data:
 
 | File | Container | Role |
 |---|---|---|
-| `Dockerfile.web` | `web` | Multi-stage build (`node:20-alpine` → `nginx:alpine`). Serves the built app plus `/data/` and `/history/` as nginx `alias`es straight from the volume. SPA fallback to `index.html`. `Cache-Control: no-cache` on `/data/` and `/history/`. |
-| `Dockerfile.worker` | `worker` | `node:20-alpine` + real `crond` (timezone `Europe/Vienna`). Runs the three scripts on schedule, writes only to the volume. No Git, no GitHub token, no network egress except to h2o-adventure.at and riverapp.net. |
+| `Dockerfile.web` | `web` | Multi-stage build (`node:20-alpine` → `nginx:alpine`). Serves the built app, `/data/` and `/history/` as nginx `alias`es straight from the volume, and proxies `/api/` to `worker:3000`. SPA fallback to `index.html`. `Cache-Control: no-cache` on `/data/` and `/history/`. Config is a `.template` (see [nginx templating](#coolify-setup)). |
+| `Dockerfile.worker` | `worker` | `node:20-alpine` running `worker/server.js`: one process, `node-cron` (timezone `Europe/Vienna`) for the schedule plus an Express app for `POST /api/refresh` and `GET /healthz`. Writes only to the volume. No Git, no GitHub token, no network egress except to h2o-adventure.at and riverapp.net. |
 
 Both are defined together in `docker-compose.yml` as a single Coolify **Docker Compose** resource, sharing the named volume `h2o_data`, mounted at `/shared` in both containers (`/shared/data`, `/shared/history`).
 
 ### Local
 
 ```bash
-docker compose up --build   # web on http://localhost:8080, worker runs its own cron
+docker compose up --build
 ```
 
-The `ports: 8080:80` mapping on `web` in `docker-compose.yml` is only there for local testing — see the Coolify setup below for how it's actually exposed in production. `worker` publishes no ports at all; it only ever talks to the volume and the two external data sources.
+Neither service binds a host port — `web` uses `expose: ["80"]` (reachable only from other containers on the Compose network, matching how Coolify's proxy reaches it in production) and `worker` publishes nothing at all. This means there's no automatic `localhost:PORT` to open in a browser locally. To smoke-test without a browser, run commands from *inside* the network via `docker compose exec`:
+
+```bash
+docker compose exec web wget -qO- http://localhost/                      # confirm nginx serves the app
+docker compose exec web wget -qO- http://localhost/data/wasserstand.json # confirm the /data/ alias reaches the volume
+docker compose exec web wget -qO- --post-data="" \
+  --header="X-Internal-Secret: change-me-in-coolify" http://localhost/api/refresh  # exercise the real refresh endpoint end-to-end
+```
+
+For actual browser testing locally, add a git-ignored `docker-compose.override.yml` (Compose merges it automatically) rather than editing the committed file:
+
+```yaml
+services:
+  web:
+    ports:
+      - "8080:80"
+```
 
 ### Coolify setup
 
 1. Create **one** new resource of type **Docker Compose**, pointing at this repo's `docker-compose.yml`. Coolify will bring up both `web` and `worker` together.
-2. In the resource's domain settings, point the domain at the **`web`** service, port `80`. Coolify's proxy talks to the container directly over its internal network — the `ports: 8080:80` line in the compose file is redundant in that path (harmless to leave; remove it if Coolify complains about a port clash) but is *not* how the public domain reaches the container. `worker` is never assigned a domain and has no `ports:` entry — it's unreachable from the outside by design.
-3. No secrets needed. Unlike the previous Git-based cron approach, the worker needs **no GitHub token** — it only writes to the local volume.
-4. Auto-deploy-on-push works normally for this resource now: a `worker` redeploy just restarts `crond` (harmless, existing volume data stays exactly as it is — see [Initialization](#initialization--data-safety) below). There's no more risk of a container redeploying *itself* every 15 minutes, because the worker no longer commits anything that would trigger a webhook.
+2. In the resource's domain settings, point the domain at the **`web`** service, port `80`. Coolify's proxy talks to the container directly over its internal network. `worker` is never assigned a domain and has no `ports:`/`expose:` entry at all — it's unreachable from the outside by design; the only path to it is `web`'s nginx `proxy_pass`.
+3. Set `INTERNAL_API_SECRET` to a real random value (e.g. `openssl rand -hex 32`) in Coolify's environment/secrets UI for **both** `web` and `worker` — same value in both. `docker-compose.yml` ships a placeholder (`change-me-in-coolify`) that's fine for local testing but must be overridden for a real deployment (see [Manual refresh API](#manual-refresh-api) for what it protects). Still **no GitHub token needed anywhere** — the worker never touches Git.
+4. nginx's config is a `.template` (`nginx.conf.template` → `/etc/nginx/templates/default.conf.template`); the official `nginx:alpine` image substitutes `${INTERNAL_API_SECRET}` into it from the environment automatically at container start (`docker-entrypoint.d`) — no manual step needed beyond setting the env var in step 3.
+5. Auto-deploy-on-push works normally for this resource: redeploying `worker` just restarts the process (harmless, existing volume data stays exactly as it is — see [Initialization](#initialization--data-safety) below).
 
 ### Schedules
 
-Both run in the `worker` container's local time, set to `Europe/Vienna` (`TZ` env var, `tzdata` package installed) — a real `crond`, not GitHub Actions' best-effort `schedule` trigger, so these fire exactly on the minute:
+Both run in the `worker` process's configured timezone, `Europe/Vienna` (the `timezone` option passed to every `cron.schedule()` call in `worker/server.js`, backed by the `tzdata` package installed in `Dockerfile.worker`) — real recurring timers in a long-lived Node process (`node-cron`), not GitHub Actions' best-effort `schedule` trigger, so these fire exactly on the minute:
 
 - `scraper.js` + `buildStats.js`: `0 * * * *` — every hour, on the hour (e.g. exactly 09:00, 10:00, …)
 - `wasserstand.js`: `*/15 * * * *` — every 15 minutes
 
-See `worker/crontab`. DST is handled correctly (CET in winter, CEST in summer) since `TZ=Europe/Vienna` plus the `tzdata` package resolve against the same IANA timezone database that `date`/Node's `Intl` use everywhere else in this project (e.g. `config.js`'s `timezone` setting) — no manual offset math anywhere.
+Both are registered with `noOverlap: true` (skip a tick rather than stack it if a previous run is still going) and a global mutex additionally prevents *any* two runs — scheduled or manual — from scraping concurrently (see [Manual refresh API](#manual-refresh-api)). DST is handled correctly (CET in winter, CEST in summer): `node-cron` v4 is DST-aware by design, backed by the same IANA timezone database (`tzdata`) that `date`/Node's `Intl` use everywhere else in this project (e.g. `config.js`'s `timezone` setting) — no manual offset math anywhere. One documented edge case: across the autumn DST fall-back, the repeated hour runs once, so `wasserstand.js`'s 15-minute schedule can pause for up to the length of that shift during that specific hour — expected behavior, not a bug.
 
 ### Initialization & data safety
 
@@ -130,32 +155,52 @@ See `worker/crontab`. DST is handled correctly (CET in winter, CEST in summer) s
 - The named volume itself (`h2o_data`) is pinned via `name: h2o_data` in `docker-compose.yml`, so the same underlying Docker volume is always reused, even if Coolify's compose project prefix ever changes — a redeploy never creates a new, empty volume by accident.
 - All JSON writes (`scraper.js`, `buildStats.js`, `wasserstand.js`) go through `lib/atomicWrite.js`: write to a temp file **in the same directory** as the target (so `rename()` stays on one filesystem and is guaranteed atomic per POSIX), then `rename()` it over the target. nginx in the `web` container can never serve a half-written file, even if it reads mid-write.
 
+### Manual refresh API
+
+`POST /api/refresh` (proxied by `web` through to `worker:3000`) is what the "Aktualisieren" button calls. It runs `runScrape({ persistHistory: false })` and `holeWasserstand({ persistHistory: false })` in parallel — real requests to h2o-adventure.at and riverapp.net, right now — and updates `<date>.json`/`wasserstand.json`. It never runs `buildStats.js` and never writes a history line (see the mode table near the top of this doc).
+
+Concurrency and abuse protection, all in `worker/server.js`:
+
+- **One run at a time, period.** A single in-memory mutex (`activeRun`) is shared across the two cron schedules *and* the manual endpoint — a manual click while a scheduled scrape is running (or vice versa, or two clicks at once) gets `409 Conflict` with the mode/start time of whatever's currently running. Nothing ever hits h2o-adventure.at/riverapp.net from two runs simultaneously.
+- **Rate limit.** At most one *completed* manual refresh per 30 seconds (`MANUAL_COOLDOWN_MS`) — a request inside that window gets `429` with the remaining wait time.
+- **Timeout without losing the lock.** If a run takes longer than 45s (`MANUAL_TIMEOUT_MS`), the HTTP request returns `202` ("running in the background, reload shortly") instead of hanging — but the mutex stays held until the run *actually* finishes, so a fast follow-up request still correctly gets `409`, not a second concurrent scrape.
+- **Same-origin, structurally.** The frontend calls the relative path `fetch("/api/refresh")` — nginx is the only thing that can reach `worker:3000` (no published port, no Coolify domain on `worker`), so there is no cross-origin path to this endpoint at all; CORS doesn't even enter into it.
+- **Shared secret, defense in depth.** nginx injects `X-Internal-Secret` (from `INTERNAL_API_SECRET`) on every proxied `/api/` request; the worker rejects anything without the matching header with `403`. A client can't set or spoof this header themselves — `proxy_set_header` always overwrites it.
+- **Optional origin allowlist.** If `H2O_PUBLIC_ORIGIN` is set on the worker, requests with a mismatching `Origin` header are also rejected with `403`. Off by default (unset) since the exact production domain isn't known until Coolify assigns it.
+
+Response shape on success:
+
+```json
+{ "success": true, "mode": "manual", "updatedAt": "...", "durationMs": 8213, "data": { "scrape": { "dates": ["2026-08-02","2026-08-03"] }, "wasserstand": { "stationen": 3 } } }
+```
+
 ### Manually testing a worker run
 
 ```bash
-docker compose exec worker sh -c "npm run wasserstand"
-docker compose exec worker sh -c "npm run scrape && npm run stats"
-```
+# Exactly what the button does. In Coolify: curl -X POST -H "X-Internal-Secret: <value>" https://<domain>/api/refresh
+# Locally (no host port by default - see "Local" above): via the docker-compose.override.yml port, or:
+docker compose exec web wget -qO- --post-data="" --header="X-Internal-Secret: <value>" http://localhost/api/refresh
 
-Or trigger exactly what cron would run, including its logging wrapper:
-
-```bash
-docker compose exec worker /app/worker/run-job.sh wasserstand sh -c "npm run wasserstand"
+# Or run the underlying scripts directly inside the container:
+docker compose exec worker sh -c "node scraper.js --manual"      # manual mode, no history
+docker compose exec worker sh -c "node scraper.js"                # scheduled mode, writes history
+docker compose exec worker sh -c "node wasserstand.js --manual"
+docker compose exec worker sh -c "node buildStats.js"              # only ever run manually/scheduled by scraper's own cron tick, never by the API
 ```
 
 ### Checking logs
 
 ```bash
-docker compose logs -f worker   # cron job start/OK/FEHLER lines, from run-job.sh
+docker compose logs -f worker   # node-cron tick logs + Express request handling, all on stdout
 docker compose logs -f web      # nginx access/error log
 ```
 
-`worker`'s crontab redirects each job's output to the container's own stdout/stderr (`/proc/1/fd/1`/`2`, since `crond -f` runs as PID 1), so everything shows up in `docker logs`/Coolify's log viewer — no mail spool or syslog to dig through. A failed run logs `[<job>] FEHLER (exit <code>) <timestamp>` but always exits `0`, so it never stops `crond` or crash-loops the container.
+`node-cron` and the run functions log directly to the worker process's own stdout/stderr — no crond, no mail spool, no separate log-wrapper script to route through. A failed scheduled tick is caught internally by `node-cron` (logged, `execution:failed` event) and never crashes the process; a failed manual run is caught in `runManualRefresh()`'s `Promise.allSettled` and reported in the API response instead of throwing.
 
 ### Healthchecks
 
 - **`web`**: `wget -qO- http://127.0.0.1:80/` from inside the container — a real HTTP request against the nginx process on the port it actually serves, not just "is the container running".
-- **`worker`**: `worker/healthcheck.sh` checks two things, not just one — `pgrep crond` (the daemon is up) *and* that `/tmp/h2o-worker-heartbeat-wasserstand` (touched by `run-job.sh` on every successful run) is younger than 20 minutes. Since `wasserstand.js` runs every 15 minutes, a stale heartbeat past 20 minutes means a job is actually failing or stuck, not just "crond exists but nothing's succeeding". `start_period: 20m` in `docker-compose.yml` gives the very first cron tick after a fresh start room to happen before failing checks count against the container.
+- **`worker`**: `GET /healthz` checks two things, not just one — the process is up (trivially true if it can answer at all) *and* that the last **scheduled** `wasserstand.js` run succeeded within the last 20 minutes (in-memory `lastScheduledWasserstandAt`, updated only by the cron path — manual refreshes deliberately don't count here, since they say nothing about whether the schedule itself is healthy). Since `wasserstand.js` runs every 15 minutes on schedule, a gap past 20 minutes means the cron is actually stuck, not just "the process exists but nothing's succeeding". `start_period: 20m` in `docker-compose.yml` gives the very first cron tick after a fresh start room to happen before failing checks count against the container.
 
 ### Backup & restore of the volume
 

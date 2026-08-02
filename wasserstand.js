@@ -107,16 +107,22 @@ function aktualisiereHistory(history, station, aktualisiertAm) {
   );
 }
 
-export async function holeWasserstand() {
+// persistHistory=false (mode "manual"): aktualisiert nur wasserstand.json
+// (die Momentaufnahme), laedt/schreibt wasserstand-history.json (die
+// 24h-Trendkurve) gar nicht erst an - ein manueller Refresh darf nie einen
+// zusaetzlichen Messpunkt in den Trend einspeisen.
+export async function holeWasserstand({ persistHistory = true } = {}) {
   const aktualisiertAm = new Date().toISOString();
-  const history = await ladeHistory();
+  const history = persistHistory === true ? await ladeHistory() : null;
   const stationen = [];
 
   for (const station of STATIONEN) {
     try {
       const ergebnis = await holeStation(station);
       stationen.push(ergebnis);
-      aktualisiereHistory(history, ergebnis, aktualisiertAm);
+      if (persistHistory === true) {
+        aktualisiereHistory(history, ergebnis, aktualisiertAm);
+      }
       console.log(
         `[wasserstand] ${ergebnis.station}: ${ergebnis.pegelCm} cm, ${ergebnis.abflussM3s} m³/s, ${ergebnis.temperaturC} °C`
       );
@@ -127,17 +133,20 @@ export async function holeWasserstand() {
 
   const snapshot = { aktualisiertAm, stationen };
   await atomicWriteFile(`${config.dataDir}/wasserstand.json`, JSON.stringify(snapshot, null, 2));
-  await atomicWriteFile(
-    `${config.dataDir}/wasserstand-history.json`,
-    JSON.stringify(history, null, 2)
-  );
+  if (persistHistory === true) {
+    await atomicWriteFile(
+      `${config.dataDir}/wasserstand-history.json`,
+      JSON.stringify(history, null, 2)
+    );
+  }
 
   return snapshot;
 }
 
 const isDirectRun = process.argv[1] && process.argv[1].endsWith("wasserstand.js");
 if (isDirectRun) {
-  holeWasserstand().catch((error) => {
+  const persistHistory = process.argv.includes("--manual") === false;
+  holeWasserstand({ persistHistory }).catch((error) => {
     console.error(`[wasserstand] Abgebrochen: ${error.message}`);
     process.exit(1);
   });

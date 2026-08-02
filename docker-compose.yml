@@ -5,12 +5,20 @@ services:
       dockerfile: Dockerfile.web
     volumes:
       - h2o_data:/shared
+    environment:
+      # Gemeinsames Secret mit "worker" (siehe dort) - nginx setzt es als
+      # Header auf jeden /api/-Request, den es weiterleitet. AENDERN fuer den
+      # echten Betrieb (z.B. per Coolify-Secret), dieser Wert ist nur ein
+      # lokaler Default.
+      INTERNAL_API_SECRET: change-me-in-coolify
     # Kein Host-Port-Binding: web soll ausschliesslich ueber Coolifys Proxy
     # erreichbar sein, nie direkt ueber einen am Host gebundenen Port.
     # "expose" macht den Port nur innerhalb des Compose-Netzwerks sichtbar
     # (fuer Coolifys Proxy), ohne ihn am Host zu binden.
     expose:
       - "80"
+    depends_on:
+      - worker
     healthcheck:
       # CMD-SHELL, damit die Ausgabe verworfen werden kann - prueft explizit
       # gegen 127.0.0.1:80, also wirklich den nginx-Prozess in diesem
@@ -32,11 +40,16 @@ services:
       TZ: Europe/Vienna
       H2O_DATA_DIR: /shared/data
       H2O_HISTORY_DIR: /shared/history
+      # Muss mit web's INTERNAL_API_SECRET uebereinstimmen.
+      INTERNAL_API_SECRET: change-me-in-coolify
+    # Bewusst KEIN "ports:"/"expose:" - nur ueber das interne Compose-Netzwerk
+    # erreichbar (nginx' proxy_pass in nginx.conf.template), nie direkt von
+    # aussen und nie an Coolifys Proxy/Domain gehaengt.
     healthcheck:
-      # Nicht nur "crond laeuft" - healthcheck.sh prueft zusaetzlich, dass der
-      # letzte wasserstand-Lauf (15-Min-Zyklus) innerhalb von 20 Minuten
-      # erfolgreich war (siehe worker/healthcheck.sh, worker/run-job.sh).
-      test: ["CMD", "/app/worker/healthcheck.sh"]
+      # Nicht nur "Prozess laeuft" - /healthz prueft zusaetzlich, dass der
+      # letzte SCHEDULED wasserstand-Lauf (15-Min-Zyklus) innerhalb von 20
+      # Minuten erfolgreich war (siehe worker/server.js).
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/healthz > /dev/null || exit 1"]
       interval: 60s
       timeout: 5s
       retries: 3

@@ -500,17 +500,48 @@ export default function App() {
   // Bleibt beim Tab-Wechsel stehen, damit die "Stand"-Zeile nicht kurz
   // verschwindet, waehrend die Daten des anderen Tages nachgeladen werden.
   const [lastUpdatedAt, setLastUpdatedAt] = useState(null);
-  // Wird bei Klick auf "Aktualisieren" auf den aktuellen Zeitstempel gesetzt -
-  // alle Tabs haengen ihren Daten-Fetch daran (neu laden, unabhaengig vom
-  // aktiven Tab) und haengen ihn als Cache-Buster an die URL, damit weder
-  // Browser noch ein zwischengeschalteter Proxy eine veraltete Fassung liefert.
+  // Wird nach einem erfolgreichen manuellen Refresh auf den aktuellen
+  // Zeitstempel gesetzt - alle Tabs haengen ihren Daten-Fetch daran (neu
+  // laden, unabhaengig vom aktiven Tab) und haengen ihn als Cache-Buster an
+  // die URL, damit weder Browser noch ein zwischengeschalteter Proxy eine
+  // veraltete Fassung liefert.
   const [refreshToken, setRefreshToken] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
+  const [manualRefreshAt, setManualRefreshAt] = useState(null);
+  const [refreshError, setRefreshError] = useState(null);
 
-  function handleRefresh() {
-    setRefreshToken(Date.now());
+  // Loest einen ECHTEN Scrape aus (POST /api/refresh, siehe worker/server.js)
+  // - im Gegensatz zu einem reinen Re-Fetch. Der Worker laeuft dabei im
+  // "manual"-Modus: schreibt nur die Anzeige-Momentaufnahmen neu, ruehrt
+  // History/Statistik nicht an.
+  async function handleRefresh() {
+    if (refreshing === true) {
+      return;
+    }
     setRefreshing(true);
-    window.setTimeout(() => setRefreshing(false), 600);
+    setRefreshError(null);
+    try {
+      const res = await fetch("/api/refresh", { method: "POST" });
+      if (res.status === 409) {
+        setRefreshError("Es laeuft bereits ein Abruf - bitte kurz warten.");
+        return;
+      }
+      if (res.status === 429) {
+        const json = await res.json().catch(() => null);
+        setRefreshError((json && json.error) || "Bitte kurz warten, bevor erneut aktualisiert wird.");
+        return;
+      }
+      if (res.ok === false) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+      const json = await res.json();
+      setManualRefreshAt(json.updatedAt || new Date().toISOString());
+      setRefreshToken(Date.now());
+    } catch (error) {
+      setRefreshError("Aktualisieren fehlgeschlagen - bitte spaeter erneut versuchen.");
+    } finally {
+      setRefreshing(false);
+    }
   }
 
   function mitCacheBuster(pfad) {
@@ -702,12 +733,16 @@ export default function App() {
           onClick={handleRefresh}
           disabled={refreshing}
           aria-label="Aktualisieren"
-          title="Laedt die zuletzt vom Worker geschriebenen Daten neu - startet keinen neuen Scraper-Lauf"
+          title="Ruft aktuelle Daten neu ab. Dieser manuelle Abruf wird nicht in die Statistik aufgenommen."
         >
           <span className={"refresh-icon" + (refreshing ? " spinning" : "")}>↻</span>
-          Aktualisieren
+          {refreshing ? "Aktualisiere …" : "Aktualisieren"}
           <span className="badge-neu">Neu</span>
         </button>
+        {refreshError !== null && <p className="refresh-error">{refreshError}</p>}
+        {refreshError === null && manualRefreshAt !== null && (
+          <p className="refresh-meta">Manuell aktualisiert: {formatStand(manualRefreshAt)}</p>
+        )}
       </header>
 
       <AnimatePresence mode="wait">

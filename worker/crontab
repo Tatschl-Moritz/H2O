@@ -1,9 +1,0 @@
-# Server-Lokalzeit (Container-TZ = Europe/Vienna) - echter crond, daher
-# wirklich minutengenau, anders als GitHub Actions' "schedule"-Trigger
-# (nur "best effort", kann bei Last verzoegert oder uebersprungen werden).
-
-# Stuendlich, volle Stunde: Touren scrapen + Statistik neu aggregieren.
-0 * * * * /app/worker/run-job.sh scrape sh -c "cd /app && npm run scrape && npm run stats" >> /proc/1/fd/1 2>> /proc/1/fd/2
-
-# Alle 15 Minuten: Wasserstand abrufen (aendert sich schneller als Anmeldezahlen).
-*/15 * * * * /app/worker/run-job.sh wasserstand sh -c "cd /app && npm run wasserstand" >> /proc/1/fd/1 2>> /proc/1/fd/2

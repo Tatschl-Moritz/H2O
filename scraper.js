@@ -243,7 +243,7 @@ function meldeFehlendeFelder(record) {
   }
 }
 
-async function scrapeDay(date, scrapedAt) {
+async function scrapeDay(date, scrapedAt, persistHistory) {
   const listUrl = `${config.baseUrl}/${config.lang}/buchen/${date}/`;
   console.log(`[scrape] ${date}: lade Tagesprogramm ${listUrl}`);
 
@@ -311,6 +311,9 @@ async function scrapeDay(date, scrapedAt) {
     }
   });
 
+  // Momentaufnahme fuer die Anzeige - wird bei jedem Lauf ueberschrieben,
+  // egal ob scheduled oder manual. Das ist der "aktuelle Zustand", kein
+  // historischer Datenpunkt.
   const snapshot = {
     date: date,
     weekday: weekday,
@@ -319,23 +322,27 @@ async function scrapeDay(date, scrapedAt) {
   };
   await atomicWriteFile(`${config.dataDir}/${date}.json`, JSON.stringify(snapshot, null, 2));
 
-  let logLines = "";
-  for (const record of records) {
-    const logEntry = {
-      scrapedAt: scrapedAt,
-      date: record.date,
-      weekday: record.weekday,
-      tourId: record.tourId,
-      tour: record.title,
-      kategorie: record.kategorie,
-      time: record.time,
-      location: record.location,
-      anmeldungen: record.anmeldungen,
-      url: record.url,
-    };
-    logLines += JSON.stringify(logEntry) + "\n";
+  // History-Zeile: nur bei scheduled-Laeufen. Ein manueller Refresh darf nie
+  // einen zusaetzlichen Messpunkt in die Statistik einspeisen.
+  if (persistHistory === true) {
+    let logLines = "";
+    for (const record of records) {
+      const logEntry = {
+        scrapedAt: scrapedAt,
+        date: record.date,
+        weekday: record.weekday,
+        tourId: record.tourId,
+        tour: record.title,
+        kategorie: record.kategorie,
+        time: record.time,
+        location: record.location,
+        anmeldungen: record.anmeldungen,
+        url: record.url,
+      };
+      logLines += JSON.stringify(logEntry) + "\n";
+    }
+    await appendFile(`${config.historyDir}/${date}.jsonl`, logLines, "utf8");
   }
-  await appendFile(`${config.historyDir}/${date}.jsonl`, logLines, "utf8");
 
   return date;
 }
@@ -352,28 +359,35 @@ async function writeIndex() {
   await atomicWriteFile(`${config.dataDir}/index.json`, JSON.stringify({ dates: dates }, null, 2));
 }
 
-export async function runScrape() {
+// persistHistory=false (mode "manual"): aktualisiert nur die Anzeige-
+// Momentaufnahmen (<datum>.json, index.json), schreibt aber NIE eine
+// History-Zeile - ein manueller Refresh darf die Statistik nie beeinflussen.
+export async function runScrape({ persistHistory = true } = {}) {
   const scrapedAt = new Date().toISOString();
 
   await mkdir(config.dataDir, { recursive: true });
   await mkdir(config.historyDir, { recursive: true });
 
+  const daten = [];
   for (const offset of config.daysToScrape) {
     const date = getDate(offset);
     try {
-      await scrapeDay(date, scrapedAt);
+      await scrapeDay(date, scrapedAt, persistHistory);
+      daten.push(date);
     } catch (error) {
       console.error(`[scrape] Tag ${date} fehlgeschlagen: ${error.message}`);
     }
   }
 
   await writeIndex();
-  console.log("[scrape] Fertig.");
+  console.log(`[scrape] Fertig (persistHistory=${persistHistory}).`);
+  return { scrapedAt, dates: daten };
 }
 
 const isDirectRun = process.argv[1] && process.argv[1].endsWith("scraper.js");
 if (isDirectRun) {
-  runScrape().catch((error) => {
+  const persistHistory = process.argv.includes("--manual") === false;
+  runScrape({ persistHistory }).catch((error) => {
     console.error(`[scrape] Abgebrochen: ${error.message}`);
     process.exit(1);
   });

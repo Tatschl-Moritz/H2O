@@ -3,5 +3,5 @@ set -e
 
 /app/worker/init-volume.sh
 
-echo "[worker] Starte crond (TZ=${TZ:-nicht gesetzt})"
-exec crond -f -l 2
+echo "[worker] Starte server.js (TZ=${TZ:-nicht gesetzt})"
+exec node worker/server.js

@@ -1,6 +1,9 @@
 FROM node:20-alpine
 
-RUN apk add --no-cache tzdata procps
+# tzdata: node-cron braucht die IANA-Zeitzonendatenbank fuer DST-korrektes
+# Scheduling in Europe/Vienna (siehe worker/server.js). Kein crond/procps
+# mehr noetig - Scheduling laeuft in-process ueber node-cron.
+RUN apk add --no-cache tzdata
 ENV TZ=Europe/Vienna
 
 WORKDIR /app
@@ -8,10 +11,12 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN chmod +x worker/entrypoint.sh worker/init-volume.sh worker/run-job.sh worker/healthcheck.sh
-COPY worker/crontab /etc/crontabs/root
-RUN chmod 0644 /etc/crontabs/root
+RUN chmod +x worker/entrypoint.sh worker/init-volume.sh
 
 VOLUME /shared
+
+# Nur intern erreichbar (kein "ports:" in docker-compose.yml) - nginx im
+# web-Container proxied /api/ hierher, siehe nginx.conf.template.
+EXPOSE 3000
 
 ENTRYPOINT ["/app/worker/entrypoint.sh"]
