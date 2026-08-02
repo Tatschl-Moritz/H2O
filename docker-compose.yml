@@ -5,12 +5,12 @@ services:
       dockerfile: Dockerfile.web
     volumes:
       - h2o_data:/shared
-    # Nur fuer lokales Testen (docker compose up). In Coolify wird diese
-    # Ressource ueber die eigene Proxy-Domain erreichbar gemacht, nicht ueber
-    # einen veroeffentlichten Host-Port - der Worker bekommt bewusst gar
-    # keinen Port.
-    ports:
-      - "8080:80"
+    # Kein Host-Port-Binding: web soll ausschliesslich ueber Coolifys Proxy
+    # erreichbar sein, nie direkt ueber einen am Host gebundenen Port.
+    # "expose" macht den Port nur innerhalb des Compose-Netzwerks sichtbar
+    # (fuer Coolifys Proxy), ohne ihn am Host zu binden.
+    expose:
+      - "80"
     healthcheck:
       # CMD-SHELL, damit die Ausgabe verworfen werden kann - prueft explizit
       # gegen 127.0.0.1:80, also wirklich den nginx-Prozess in diesem
