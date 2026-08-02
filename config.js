@@ -22,7 +22,7 @@ export const config = {
   userAgent:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
 
-  // Ausgabeordner (wird von Vercel statisch ausgeliefert)
+  // Ausgabeordner (wird statisch ausgeliefert, z.B. via nginx/Coolify)
   publicDir: "./public",
   dataDir: "./public/data",       // aktuelle Momentaufnahme pro Tag
   historyDir: "./public/history", // Verlaufs-Log pro Tag (waechst)
