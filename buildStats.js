@@ -12,8 +12,9 @@
 // Ausfuehren: node buildStats.js
 // ============================================================================
 
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { config } from "./config.js";
+import { atomicWriteFile } from "./lib/atomicWrite.js";
 
 const CUTOFF_HOUR = 18;
 
@@ -251,7 +252,7 @@ export async function buildStats() {
     seasons,
   };
 
-  await writeFile(`${config.dataDir}/stats.json`, JSON.stringify(stats, null, 2), "utf8");
+  await atomicWriteFile(`${config.dataDir}/stats.json`, JSON.stringify(stats, null, 2));
   console.log(
     `[stats] ${zeilen.length} History-Zeilen -> ${seasons.length} Saison(en) -> ${config.dataDir}/stats.json`
   );

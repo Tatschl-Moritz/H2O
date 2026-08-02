@@ -22,8 +22,11 @@ export const config = {
   userAgent:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
 
-  // Ausgabeordner (wird statisch ausgeliefert, z.B. via nginx/Coolify)
+  // Ausgabeordner (wird statisch ausgeliefert, z.B. via nginx/Coolify).
+  // Per Env-Var ueberschreibbar, damit der Worker-Container ins gemeinsame
+  // Volume (/shared/data, /shared/history) schreibt, waehrend lokale
+  // Entwicklung ohne weitere Konfiguration in public/ schreibt.
   publicDir: "./public",
-  dataDir: "./public/data",       // aktuelle Momentaufnahme pro Tag
-  historyDir: "./public/history", // Verlaufs-Log pro Tag (waechst)
+  dataDir: process.env.H2O_DATA_DIR || "./public/data",       // aktuelle Momentaufnahme pro Tag
+  historyDir: process.env.H2O_HISTORY_DIR || "./public/history", // Verlaufs-Log pro Tag (waechst)
 };

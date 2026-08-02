@@ -1,5 +1,13 @@
 name: Scrape H2O
 
+# UEBERGANGSWEISE: Der Hetzner-Server hat jetzt einen eigenen Worker-Container
+# (Dockerfile.worker), der dieselben Skripte per echtem crond minutengenau
+# ausfuehrt und direkt ins gemeinsame Docker-Volume schreibt - ohne Git.
+# Dieser Workflow laeuft parallel weiter (committet wie bisher nach public/),
+# bis der Worker auf dem Server bestaetigt zuverlaessig laeuft. Danach hier
+# nur den "schedule:"-Block auskommentieren/entfernen (workflow_dispatch als
+# manueller Fallback bleibt) - nicht vorher, sonst gibt es eine Luecke in der
+# Datenerfassung.
 on:
   schedule:
     # Laeuft jede volle Stunde, rund um die Uhr (auch nachts), damit die

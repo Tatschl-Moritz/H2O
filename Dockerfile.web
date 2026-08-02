@@ -8,5 +8,8 @@ RUN npm run build
 FROM nginx:alpine AS runtime
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Gemeinsames Volume mit dem Worker (befuellt /shared/data, /shared/history) -
+# siehe nginx.conf fuer die /data/ und /history/ alias-Locations.
+VOLUME /shared
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

@@ -11,8 +11,9 @@
 // ============================================================================
 
 import * as cheerio from "cheerio";
-import { writeFile, appendFile, mkdir, readdir } from "node:fs/promises";
+import { appendFile, mkdir, readdir } from "node:fs/promises";
 import { config } from "./config.js";
+import { atomicWriteFile } from "./lib/atomicWrite.js";
 
 // --- kleine Helfer ----------------------------------------------------------
 
@@ -316,7 +317,7 @@ async function scrapeDay(date, scrapedAt) {
     updatedAt: scrapedAt,
     tours: records,
   };
-  await writeFile(`${config.dataDir}/${date}.json`, JSON.stringify(snapshot, null, 2), "utf8");
+  await atomicWriteFile(`${config.dataDir}/${date}.json`, JSON.stringify(snapshot, null, 2));
 
   let logLines = "";
   for (const record of records) {
@@ -348,7 +349,7 @@ async function writeIndex() {
     }
   }
   dates.sort();
-  await writeFile(`${config.dataDir}/index.json`, JSON.stringify({ dates: dates }, null, 2), "utf8");
+  await atomicWriteFile(`${config.dataDir}/index.json`, JSON.stringify({ dates: dates }, null, 2));
 }
 
 export async function runScrape() {

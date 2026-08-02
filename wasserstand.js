@@ -14,8 +14,9 @@
 // Ausfuehren: node wasserstand.js
 // ============================================================================
 
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { config } from "./config.js";
+import { atomicWriteFile } from "./lib/atomicWrite.js";
 
 const STATIONEN = [
   { id: "51b60958e4b082f2a47370ba", name: "Magerbach", gewaesser: "Inn" },
@@ -125,11 +126,10 @@ export async function holeWasserstand() {
   }
 
   const snapshot = { aktualisiertAm, stationen };
-  await writeFile(`${config.dataDir}/wasserstand.json`, JSON.stringify(snapshot, null, 2), "utf8");
-  await writeFile(
+  await atomicWriteFile(`${config.dataDir}/wasserstand.json`, JSON.stringify(snapshot, null, 2));
+  await atomicWriteFile(
     `${config.dataDir}/wasserstand-history.json`,
-    JSON.stringify(history, null, 2),
-    "utf8"
+    JSON.stringify(history, null, 2)
   );
 
   return snapshot;

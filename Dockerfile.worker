@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+RUN apk add --no-cache tzdata procps
+ENV TZ=Europe/Vienna
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+RUN chmod +x worker/entrypoint.sh worker/init-volume.sh worker/run-job.sh worker/healthcheck.sh
+COPY worker/crontab /etc/crontabs/root
+RUN chmod 0644 /etc/crontabs/root
+
+VOLUME /shared
+
+ENTRYPOINT ["/app/worker/entrypoint.sh"]

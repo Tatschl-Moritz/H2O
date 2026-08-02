@@ -1,5 +1,56 @@
 services:
-  h2o:
-    build: .
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    volumes:
+      - h2o_data:/shared
+    # Nur fuer lokales Testen (docker compose up). In Coolify wird diese
+    # Ressource ueber die eigene Proxy-Domain erreichbar gemacht, nicht ueber
+    # einen veroeffentlichten Host-Port - der Worker bekommt bewusst gar
+    # keinen Port.
     ports:
       - "8080:80"
+    healthcheck:
+      # CMD-SHELL, damit die Ausgabe verworfen werden kann - prueft explizit
+      # gegen 127.0.0.1:80, also wirklich den nginx-Prozess in diesem
+      # Container (nicht nur "der Container existiert").
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:80/ > /dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    volumes:
+      - h2o_data:/shared
+    environment:
+      TZ: Europe/Vienna
+      H2O_DATA_DIR: /shared/data
+      H2O_HISTORY_DIR: /shared/history
+    healthcheck:
+      # Nicht nur "crond laeuft" - healthcheck.sh prueft zusaetzlich, dass der
+      # letzte wasserstand-Lauf (15-Min-Zyklus) innerhalb von 20 Minuten
+      # erfolgreich war (siehe worker/healthcheck.sh, worker/run-job.sh).
+      test: ["CMD", "/app/worker/healthcheck.sh"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+      # Grosszuegig, damit der allererste Cron-Tick nach dem Start (im
+      # ungluecklichsten Fall fast 15 Minuten entfernt) nicht schon als
+      # unhealthy gewertet wird.
+      start_period: 20m
+    restart: unless-stopped
+
+# Expliziter Name (statt dem von Compose abgeleiteten "<projekt>_h2o_data"),
+# damit IMMER dasselbe Docker-Volume wiederverwendet wird - auch wenn sich
+# der Compose-Projektname/-Praefix durch ein Coolify-Redeploy oder eine
+# Ressourcen-Umbenennung mal aendern sollte. Ohne das koennte ein Redeploy
+# unbemerkt ein neues, leeres Volume anlegen statt das bestehende zu nutzen.
+volumes:
+  h2o_data:
+    name: h2o_data

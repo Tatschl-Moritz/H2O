@@ -1,5 +1,9 @@
 name: Wasserstand
 
+# UEBERGANGSWEISE: siehe scrape.yml - der Worker-Container auf dem
+# Hetzner-Server macht das Gleiche minutengenau ohne Git. Erst deaktivieren
+# ("schedule:" entfernen, workflow_dispatch behalten), wenn der Worker
+# bestaetigt zuverlaessig laeuft.
 on:
   schedule:
     # Alle 15 Minuten, unabhaengig vom Tour-Scraper - Pegel kann sich schneller

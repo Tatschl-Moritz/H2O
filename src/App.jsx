@@ -185,7 +185,7 @@ function mitVerlaufsfarbe(daten) {
 // Statistik-Tab: laedt die vorberechnete stats.json und zeigt die Graphen.
 // Die Daten darin beruecksichtigen nur Scrapes bis 18 Uhr Wiener Zeit, weil
 // danach Zahlen von den Chefs manuell nachbearbeitet werden koennen.
-function Statistik() {
+function Statistik({ refreshToken }) {
   const [stats, setStats] = useState(null);
   const [status, setStatus] = useState("loading"); // loading | ok | error
   // Index in stats.seasons; 0 = neueste Saison (Array ist neueste-zuerst sortiert).
@@ -193,7 +193,8 @@ function Statistik() {
 
   useEffect(() => {
     let aktiv = true;
-    fetch("/data/stats.json")
+    const pfad = refreshToken ? `/data/stats.json?t=${refreshToken}` : "/data/stats.json";
+    fetch(pfad)
       .then((res) => {
         if (res.ok === false) {
           throw new Error("not found");
@@ -215,7 +216,7 @@ function Statistik() {
     return () => {
       aktiv = false;
     };
-  }, []);
+  }, [refreshToken]);
 
   if (status === "loading") {
     return <div className="state">Lade Statistik …</div>;
@@ -364,16 +365,17 @@ function Statistik() {
 }
 
 // Wasserstand-Tab: aktuelle Pegel-Werte + 24h-Verlauf je Messstelle.
-function Wasserstand() {
+function Wasserstand({ refreshToken }) {
   const [snapshot, setSnapshot] = useState(null);
   const [history, setHistory] = useState(null);
   const [status, setStatus] = useState("loading"); // loading | ok | error
 
   useEffect(() => {
     let aktiv = true;
+    const busted = (pfad) => (refreshToken ? `${pfad}?t=${refreshToken}` : pfad);
     Promise.all([
-      fetch("/data/wasserstand.json").then((res) => (res.ok ? res.json() : null)),
-      fetch("/data/wasserstand-history.json").then((res) => (res.ok ? res.json() : null)),
+      fetch(busted("/data/wasserstand.json")).then((res) => (res.ok ? res.json() : null)),
+      fetch(busted("/data/wasserstand-history.json")).then((res) => (res.ok ? res.json() : null)),
     ])
       .then(([snapshotJson, historyJson]) => {
         if (aktiv === false) {
@@ -395,7 +397,7 @@ function Wasserstand() {
     return () => {
       aktiv = false;
     };
-  }, []);
+  }, [refreshToken]);
 
   if (status === "loading") {
     return <div className="state">Lade Wasserstand …</div>;
@@ -498,6 +500,22 @@ export default function App() {
   // Bleibt beim Tab-Wechsel stehen, damit die "Stand"-Zeile nicht kurz
   // verschwindet, waehrend die Daten des anderen Tages nachgeladen werden.
   const [lastUpdatedAt, setLastUpdatedAt] = useState(null);
+  // Wird bei Klick auf "Aktualisieren" auf den aktuellen Zeitstempel gesetzt -
+  // alle Tabs haengen ihren Daten-Fetch daran (neu laden, unabhaengig vom
+  // aktiven Tab) und haengen ihn als Cache-Buster an die URL, damit weder
+  // Browser noch ein zwischengeschalteter Proxy eine veraltete Fassung liefert.
+  const [refreshToken, setRefreshToken] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+
+  function handleRefresh() {
+    setRefreshToken(Date.now());
+    setRefreshing(true);
+    window.setTimeout(() => setRefreshing(false), 600);
+  }
+
+  function mitCacheBuster(pfad) {
+    return refreshToken ? `${pfad}?t=${refreshToken}` : pfad;
+  }
 
   const dates = { heute: dateInVienna(0), morgen: dateInVienna(1) };
 
@@ -511,7 +529,7 @@ export default function App() {
     setData(null);
 
     const datum = dates[tab];
-    fetch(`/data/${datum}.json`)
+    fetch(mitCacheBuster(`/data/${datum}.json`))
       .then((res) => {
         if (res.ok === false) {
           throw new Error("not found");
@@ -541,7 +559,7 @@ export default function App() {
     return () => {
       aktiv = false;
     };
-  }, [tab]);
+  }, [tab, refreshToken]);
 
   // Vollste Tour des Tages (fuer die Wasserstand-Skala).
   let maxCount = 0;
@@ -556,9 +574,9 @@ export default function App() {
   // Hauptbereich je nach Zustand.
   let body;
   if (tab === "statistik") {
-    body = <Statistik />;
+    body = <Statistik refreshToken={refreshToken} />;
   } else if (tab === "wasserstand") {
-    body = <Wasserstand />;
+    body = <Wasserstand refreshToken={refreshToken} />;
   } else if (status === "loading") {
     body = <div className="state">Lade Programm …</div>;
   } else if (status === "error") {
@@ -673,13 +691,23 @@ export default function App() {
           </button>
           <button className={statistikClass} onClick={() => setTab("statistik")}>
             Statistik
-            <span className="badge-neu">Neu</span>
           </button>
           <button className={wasserstandClass} onClick={() => setTab("wasserstand")}>
             Wasserstand
-            <span className="badge-neu">Neu</span>
           </button>
         </div>
+
+        <button
+          className="refresh-btn"
+          onClick={handleRefresh}
+          disabled={refreshing}
+          aria-label="Aktualisieren"
+          title="Laedt die zuletzt vom Worker geschriebenen Daten neu - startet keinen neuen Scraper-Lauf"
+        >
+          <span className={"refresh-icon" + (refreshing ? " spinning" : "")}>↻</span>
+          Aktualisieren
+          <span className="badge-neu">Neu</span>
+        </button>
       </header>
 
       <AnimatePresence mode="wait">
