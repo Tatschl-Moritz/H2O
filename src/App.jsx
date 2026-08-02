@@ -509,17 +509,55 @@ export default function App() {
   const [refreshing, setRefreshing] = useState(false);
   const [manualRefreshAt, setManualRefreshAt] = useState(null);
   const [refreshError, setRefreshError] = useState(null);
+  // { completed, total, label } waehrend eines manuellen Laufs, sonst null.
+  // Kommt aus GET /api/refresh/status, das waehrend des POST /api/refresh
+  // parallel gepollt wird (siehe worker/server.js: onProgress-Callbacks in
+  // scraper.js/wasserstand.js fuettern activeRun.progress live).
+  const [refreshProgress, setRefreshProgress] = useState(null);
+  const [refreshElapsedS, setRefreshElapsedS] = useState(0);
 
   // Loest einen ECHTEN Scrape aus (POST /api/refresh, siehe worker/server.js)
   // - im Gegensatz zu einem reinen Re-Fetch. Der Worker laeuft dabei im
   // "manual"-Modus: schreibt nur die Anzeige-Momentaufnahmen neu, ruehrt
-  // History/Statistik nicht an.
+  // History/Statistik nicht an. Waehrend der POST-Request laeuft, pollt ein
+  // zweiter, unabhaengiger Request-Strang GET /api/refresh/status fuer die
+  // Fortschrittsanzeige - Browser koennen beide Requests parallel offen halten.
   async function handleRefresh() {
     if (refreshing === true) {
       return;
     }
     setRefreshing(true);
     setRefreshError(null);
+    setRefreshProgress(null);
+    const startedAtMs = Date.now();
+    setRefreshElapsedS(0);
+
+    const elapsedTimer = window.setInterval(() => {
+      setRefreshElapsedS(Math.round((Date.now() - startedAtMs) / 1000));
+    }, 1000);
+
+    let pollingAktiv = true;
+    async function pollProgress() {
+      while (pollingAktiv === true) {
+        await new Promise((resolve) => window.setTimeout(resolve, 700));
+        if (pollingAktiv === false) {
+          return;
+        }
+        try {
+          const res = await fetch("/api/refresh/status");
+          if (res.ok === true) {
+            const json = await res.json();
+            if (json.active === true && json.total !== null) {
+              setRefreshProgress({ completed: json.completed, total: json.total, label: json.label });
+            }
+          }
+        } catch {
+          // Naechster Poll-Zyklus versucht es einfach erneut.
+        }
+      }
+    }
+    pollProgress();
+
     try {
       const res = await fetch("/api/refresh", { method: "POST" });
       if (res.status === 409) {
@@ -540,7 +578,10 @@ export default function App() {
     } catch (error) {
       setRefreshError("Aktualisieren fehlgeschlagen - bitte spaeter erneut versuchen.");
     } finally {
+      pollingAktiv = false;
+      window.clearInterval(elapsedTimer);
       setRefreshing(false);
+      setRefreshProgress(null);
     }
   }
 
@@ -739,8 +780,31 @@ export default function App() {
           {refreshing ? "Aktualisiere …" : "Aktualisieren"}
           <span className="badge-neu">Neu</span>
         </button>
-        {refreshError !== null && <p className="refresh-error">{refreshError}</p>}
-        {refreshError === null && manualRefreshAt !== null && (
+        {refreshing === true && (() => {
+          const prozent =
+            refreshProgress !== null && refreshProgress.total > 0
+              ? Math.min(100, Math.round((refreshProgress.completed / refreshProgress.total) * 100))
+              : null;
+          return (
+            <div className="refresh-progress">
+              <div className="refresh-progress-track">
+                <div
+                  className={"refresh-progress-fill" + (prozent === null ? " indeterminate" : "")}
+                  style={prozent !== null ? { width: `${prozent}%` } : undefined}
+                />
+              </div>
+              <p className="refresh-progress-label">
+                {refreshProgress !== null && refreshProgress.total > 0
+                  ? `${refreshProgress.completed}/${refreshProgress.total} · ${refreshProgress.label}`
+                  : "Startet …"}
+                {" · "}
+                {refreshElapsedS}s
+              </p>
+            </div>
+          );
+        })()}
+        {refreshing === false && refreshError !== null && <p className="refresh-error">{refreshError}</p>}
+        {refreshing === false && refreshError === null && manualRefreshAt !== null && (
           <p className="refresh-meta">Manuell aktualisiert: {formatStand(manualRefreshAt)}</p>
         )}
       </header>

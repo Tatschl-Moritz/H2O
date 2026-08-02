@@ -74,15 +74,36 @@ async function runScheduledWasserstand() {
 
 // --- Manueller Lauf (POST /api/refresh) -------------------------------------
 
+// Mutierbares Fortschritts-Objekt, das waehrend eines manuellen Laufs an
+// activeRun.progress haengt - scraper.js/wasserstand.js rufen die beiden
+// onXProgress-Callbacks live auf, GET /api/refresh/status liest daraus.
+function neuerProgress() {
+  return { scrapeCompleted: 0, scrapeTotal: 0, wasserstandCompleted: 0, wasserstandTotal: 0, label: "Startet …" };
+}
+
 // Scraped + holt Wasserstand parallel, beides mit persistHistory:false.
 // Laeuft NIE buildStats.js - der manuelle Refresh darf dessen Quelldaten
 // (die History) gar nicht erst veraendert haben.
-async function runManualRefresh() {
+async function runManualRefresh(progress) {
   const t0 = Date.now();
 
   const [scrapeResult, wasserstandResult] = await Promise.allSettled([
-    runScrape({ persistHistory: false }),
-    holeWasserstand({ persistHistory: false }),
+    runScrape({
+      persistHistory: false,
+      onProgress: ({ completed, total, label }) => {
+        progress.scrapeCompleted = completed;
+        progress.scrapeTotal = total;
+        progress.label = label;
+      },
+    }),
+    holeWasserstand({
+      persistHistory: false,
+      onProgress: ({ completed, total, label }) => {
+        progress.wasserstandCompleted = completed;
+        progress.wasserstandTotal = total;
+        progress.label = label;
+      },
+    }),
   ]);
 
   if (scrapeResult.status === "rejected") {
@@ -133,7 +154,9 @@ app.get("/healthz", (req, res) => {
   });
 });
 
-app.post("/api/refresh", async (req, res) => {
+// Gilt fuer alle /api/*-Routen (Refresh-Trigger UND Status-Abfrage) - eine
+// Stelle statt Duplikation in jedem Handler.
+app.use("/api", (req, res, next) => {
   // Sicherheit, Schicht 1 (strukturell): dieser Port wird nie veroeffentlicht
   // und bekommt keine Coolify-Domain - erreichbar nur ueber nginx' proxy_pass.
   // Schicht 2: gemeinsames Secret, das nur nginx setzt (siehe nginx.conf.template).
@@ -147,7 +170,28 @@ app.post("/api/refresh", async (req, res) => {
     res.status(403).json({ success: false, error: "forbidden origin" });
     return;
   }
+  next();
+});
 
+// Fuer die Fortschrittsanzeige im Frontend waehrend eines manuellen Refreshs -
+// rein lesend, kein Rate-Limit/Mutex noetig (loest selbst nichts aus).
+app.get("/api/refresh/status", (req, res) => {
+  if (activeRun === null) {
+    res.status(200).json({ active: false });
+    return;
+  }
+  const p = activeRun.progress;
+  res.status(200).json({
+    active: true,
+    mode: activeRun.mode,
+    startedAt: activeRun.startedAt,
+    completed: p ? p.scrapeCompleted + p.wasserstandCompleted : null,
+    total: p ? p.scrapeTotal + p.wasserstandTotal : null,
+    label: p ? p.label : null,
+  });
+});
+
+app.post("/api/refresh", async (req, res) => {
   if (activeRun !== null) {
     res.status(409).json({
       success: false,
@@ -169,8 +213,9 @@ app.post("/api/refresh", async (req, res) => {
   }
 
   const startedAt = new Date().toISOString();
-  activeRun = { mode: "manual", startedAt };
-  const runPromise = runManualRefresh().finally(() => {
+  const progress = neuerProgress();
+  activeRun = { mode: "manual", startedAt, progress };
+  const runPromise = runManualRefresh(progress).finally(() => {
     activeRun = null;
     lastManualCompletedAt = Date.now();
   });

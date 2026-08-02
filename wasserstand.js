@@ -111,10 +111,12 @@ function aktualisiereHistory(history, station, aktualisiertAm) {
 // (die Momentaufnahme), laedt/schreibt wasserstand-history.json (die
 // 24h-Trendkurve) gar nicht erst an - ein manueller Refresh darf nie einen
 // zusaetzlichen Messpunkt in den Trend einspeisen.
-export async function holeWasserstand({ persistHistory = true } = {}) {
+export async function holeWasserstand({ persistHistory = true, onProgress } = {}) {
   const aktualisiertAm = new Date().toISOString();
   const history = persistHistory === true ? await ladeHistory() : null;
   const stationen = [];
+  let completed = 0;
+  const total = STATIONEN.length;
 
   for (const station of STATIONEN) {
     try {
@@ -128,6 +130,10 @@ export async function holeWasserstand({ persistHistory = true } = {}) {
       );
     } catch (error) {
       console.warn(`[wasserstand] ${station.name} fehlgeschlagen: ${error.message}`);
+    }
+    completed += 1;
+    if (onProgress) {
+      onProgress({ completed, total, label: `Wasserstand: ${station.name}` });
     }
   }
 

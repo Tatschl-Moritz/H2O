@@ -243,13 +243,16 @@ function meldeFehlendeFelder(record) {
   }
 }
 
-async function scrapeDay(date, scrapedAt, persistHistory) {
+async function scrapeDay(date, scrapedAt, persistHistory, progress) {
   const listUrl = `${config.baseUrl}/${config.lang}/buchen/${date}/`;
   console.log(`[scrape] ${date}: lade Tagesprogramm ${listUrl}`);
 
   const listHtml = await fetchPage(listUrl);
   const tours = parseTourList(listHtml);
   console.log(`[scrape] ${date}: ${tours.length} Tour(en) gefunden.`);
+  if (progress) {
+    progress.onListLoaded(date, tours.length);
+  }
 
   const weekday = getWeekday(date);
   const records = [];
@@ -298,6 +301,9 @@ async function scrapeDay(date, scrapedAt, persistHistory) {
     meldeFehlendeFelder(record);
 
     records.push(record);
+    if (progress) {
+      progress.onTour(`${record.time || "?"} ${record.title || "Tour"}`.trim());
+    }
     await sleep(config.delayBetweenRequestsMs);
   }
 
@@ -362,17 +368,37 @@ async function writeIndex() {
 // persistHistory=false (mode "manual"): aktualisiert nur die Anzeige-
 // Momentaufnahmen (<datum>.json, index.json), schreibt aber NIE eine
 // History-Zeile - ein manueller Refresh darf die Statistik nie beeinflussen.
-export async function runScrape({ persistHistory = true } = {}) {
+//
+// onProgress({completed, total, label}), falls uebergeben, wird nach jeder
+// geladenen Tagesliste (erhoeht total) und nach jeder gescrapten Tour
+// (erhoeht completed) aufgerufen - fuer eine Fortschrittsanzeige im Frontend
+// waehrend eines manuellen Refreshs (siehe worker/server.js).
+export async function runScrape({ persistHistory = true, onProgress } = {}) {
   const scrapedAt = new Date().toISOString();
 
   await mkdir(config.dataDir, { recursive: true });
   await mkdir(config.historyDir, { recursive: true });
 
+  let completed = 0;
+  let total = 0;
+  const progress = onProgress
+    ? {
+        onListLoaded: (date, anzahl) => {
+          total += anzahl;
+          onProgress({ completed, total, label: `${date}: Tagesprogramm geladen (${anzahl} Touren)` });
+        },
+        onTour: (label) => {
+          completed += 1;
+          onProgress({ completed, total, label });
+        },
+      }
+    : undefined;
+
   const daten = [];
   for (const offset of config.daysToScrape) {
     const date = getDate(offset);
     try {
-      await scrapeDay(date, scrapedAt, persistHistory);
+      await scrapeDay(date, scrapedAt, persistHistory, progress);
       daten.push(date);
     } catch (error) {
       console.error(`[scrape] Tag ${date} fehlgeschlagen: ${error.message}`);
